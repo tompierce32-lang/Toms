@@ -15,30 +15,20 @@
   --text:#0d2a3f;--subtext:#3a6a8a;--muted:#7aaac8;
   --green:#1a8f4e;--red:#c0392b;--blue:#1a6fa8;--orange:#c47a1a;
   --teal:#1a8a7a;--purple:#5a3a9a;
-  --income-bg:#d4f0e4;--income-fg:#15703c;
-  --housing-bg:#cce4f5;--housing-fg:#1a6fa8;
-  --energy-bg:#fde8cc;--energy-fg:#b05e00;
-  --utils-bg:#cceeee;--utils-fg:#0e6b6b;
-  --car-bg:#e4d9f5;--car-fg:#5a3a9a;
-  --phone-bg:#d5eef9;--phone-fg:#1a6fa8;
-  --sub-bg:#dde8f0;--sub-fg:#2a5a7a;
-  --debt-bg:#fad5d0;--debt-fg:#b02a1a;
-  --loan-bg:#f5ccc8;--loan-fg:#9a1a0e;
-  --lend-bg:#fad5d0;--lend-fg:#b02a1a;
-  --spent-bg:#fde8cc;--spent-fg:#9a5500;
+  --income-bg:#d4f0e4;--housing-bg:#cce4f5;--energy-bg:#fde8cc;
+  --utils-bg:#cceeee;--car-bg:#e4d9f5;--phone-bg:#d5eef9;
+  --sub-bg:#dde8f0;--debt-bg:#fad5d0;--loan-bg:#f5ccc8;
+  --lend-bg:#fad5d0;--spent-bg:#fde8cc;
   --radius:12px;--radius-sm:8px;
 }
 body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh;overflow-x:hidden}
 .header{background:#1a6fa8;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px #1a6fa855;gap:8px}
 .header-title{font-size:1.1rem;font-weight:700;color:#fff;display:flex;align-items:center;gap:8px;flex-shrink:0}
 .header-actions{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
-.save-status{font-size:.7rem;font-weight:700;padding:3px 9px;border-radius:20px;border:1px solid rgba(255,255,255,.25);color:rgba(255,255,255,.95);background:rgba(255,255,255,.12);transition:all .3s;white-space:nowrap;letter-spacing:.03em}
-.save-status.ss-loading{background:rgba(100,160,255,.35)}
-.save-status.ss-saving{background:rgba(255,200,0,.35)}
-.save-status.ss-saved{background:rgba(0,200,100,.35)}
-.save-status.ss-error{background:rgba(255,80,80,.35)}
-.save-status.ss-offline{background:rgba(255,140,0,.35)}
-.save-status.ss-local{background:rgba(150,150,200,.35)}
+.save-status{font-size:.7rem;font-weight:700;padding:3px 9px;border-radius:20px;border:1px solid rgba(255,255,255,.25);color:rgba(255,255,255,.95);background:rgba(255,255,255,.12);transition:all .3s;white-space:nowrap}
+.save-status.ss-loading{background:rgba(100,160,255,.35)}.save-status.ss-saving{background:rgba(255,200,0,.35)}
+.save-status.ss-saved{background:rgba(0,200,100,.35)}.save-status.ss-error{background:rgba(255,80,80,.35)}
+.save-status.ss-offline{background:rgba(255,140,0,.35)}.save-status.ss-local{background:rgba(150,150,200,.35)}
 .btn{border:none;border-radius:var(--radius-sm);padding:8px 14px;font-size:.85rem;font-weight:600;cursor:pointer;transition:all .15s;display:inline-flex;align-items:center;gap:5px;white-space:nowrap}
 .btn:active{transform:scale(.96)}
 .btn-primary{background:#1a6fa8;color:#fff}.btn-primary:hover{background:#155a8a}
@@ -47,9 +37,22 @@ body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,san
 .btn-info{background:#1a6fa8;color:#fff}.btn-info:hover{background:#155a8a}
 .btn-warn{background:#b45309;color:#fff}.btn-warn:hover{background:#92400e}
 .btn-ghost{background:var(--surface2);color:var(--text)}.btn-ghost:hover{background:var(--surface3)}
-.btn-purple{background:#5a3a9a;color:#fff}.btn-purple:hover{background:#4a2a8a}
 .btn-teal{background:#1a8a7a;color:#fff}.btn-teal:hover{background:#147060}
 .btn-sm{padding:6px 10px;font-size:.78rem}
+/* ── Checkbox column ── */
+.cb-cell{width:42px;padding:8px 6px!important;text-align:center;cursor:pointer}
+.cb{width:22px;height:22px;border:2px solid var(--surface3);border-radius:6px;margin:0 auto;transition:all .15s;display:flex;align-items:center;justify-content:center;font-size:.9rem;background:#fff}
+.cb.checked{background:#1a6fa8;border-color:#1a6fa8;color:#fff}
+.cb.checked-green{background:#1a8f4e;border-color:#1a8f4e;color:#fff}
+/* ── Inline action buttons (debt & savings rows) ── */
+.row-action-btn{border:none;border-radius:6px;padding:5px 8px;font-size:.75rem;font-weight:700;cursor:pointer;transition:all .15s;margin-left:4px;white-space:nowrap;vertical-align:middle}
+.row-action-btn:active{transform:scale(.92)}
+.rab-confirm{background:#d4f0e4;color:#1a8f4e;border:1px solid #1a8f4e44}
+.rab-confirm:hover{background:#1a8f4e;color:#fff}
+.rab-confirmed{background:#1a8f4e;color:#fff;cursor:default}
+.rab-edit{background:var(--surface2);color:var(--subtext);border:1px solid var(--surface3)}
+.rab-edit:hover{background:#1a6fa8;color:#fff;border-color:#1a6fa8}
+/* ── Month tabs ── */
 .months-nav{background:var(--surface);border-bottom:1px solid var(--surface2);overflow-x:auto;white-space:nowrap;scrollbar-width:none;-ms-overflow-style:none}
 .months-nav::-webkit-scrollbar{display:none}
 .months-tabs{display:inline-flex;padding:8px 12px;gap:6px;align-items:center}
@@ -58,15 +61,14 @@ body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,san
 .month-tab.active{background:linear-gradient(135deg,#1a6fa8,#0f4e7a);color:#fff;box-shadow:0 2px 12px #1a6fa855}
 .month-tab.has-data::after{content:'•';margin-left:4px;color:var(--green);font-size:.7rem}
 .month-tab.active.has-data::after{color:#cce8ff}
-.year-sep{display:inline-flex;align-items:center;padding:4px 8px;color:#fff;font-size:.68rem;font-weight:700;letter-spacing:.08em;background:#1a6fa8;border-radius:20px;margin:0 4px;opacity:.8}
+.year-sep{display:inline-flex;align-items:center;padding:4px 8px;color:#fff;font-size:.68rem;font-weight:700;background:#1a6fa8;border-radius:20px;margin:0 4px;opacity:.8}
 .main{padding:12px;max-width:1200px;margin:0 auto}
 .summary-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(115px,1fr));gap:10px;margin-bottom:14px}
 .card{background:var(--surface);border-radius:var(--radius);padding:14px;border:1px solid var(--surface2)}
 .card-label{font-size:.7rem;color:var(--subtext);font-weight:600;text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
 .card-value{font-size:1.35rem;font-weight:800;line-height:1}
 .card-value.green{color:var(--green)}.card-value.red{color:var(--red)}
-.card-value.blue{color:var(--blue)}.card-value.teal{color:var(--teal)}
-.card-value.orange{color:var(--orange)}.card-value.purple{color:var(--purple)}
+.card-value.teal{color:var(--teal)}.card-value.orange{color:var(--orange)}
 .toolbar{display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap}
 .table-wrap{background:var(--surface);border-radius:var(--radius);border:1px solid var(--surface2);overflow:hidden}
 .table-wrap table{width:100%;border-collapse:collapse}
@@ -75,7 +77,7 @@ body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,san
 .table-wrap td{padding:10px 12px;font-size:.87rem;border-top:1px solid #e8f4fd;white-space:nowrap}
 .table-wrap td.num{text-align:right;font-family:'Consolas',monospace;font-weight:600}
 .table-wrap tr:hover td{background:#f0f8ff;cursor:pointer}
-.table-wrap tr.selected td{background:#1a6fa822;outline:1px solid #1a6fa844}
+.table-wrap tr.selected td{background:#1a6fa811;outline:1px solid #1a6fa855}
 .table-wrap tr.row-income td{background:var(--income-bg)}
 .table-wrap tr.row-housing td{background:var(--housing-bg)}
 .table-wrap tr.row-energy td{background:var(--energy-bg)}
@@ -88,15 +90,18 @@ body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,san
 .table-wrap tr.row-lend td{background:var(--lend-bg)}
 .table-wrap tr.row-spent td{background:var(--spent-bg)}
 .table-wrap tr.debt-auto-row td{background:#fff0ee;border-left:3px solid #e74c3c}
-.table-wrap tr.debt-auto-row:hover td{background:#ffe4e0}
+.table-wrap tr.debt-auto-row:hover td{background:#ffe8e4}
+.table-wrap tr.debt-confirmed-row td{background:#d4f0e4;border-left:3px solid #1a8f4e}
+.table-wrap tr.debt-confirmed-row:hover td{background:#c8ecd8}
 .auto-badge{display:inline-block;background:#e74c3c;color:#fff;font-size:.58rem;padding:1px 5px;border-radius:8px;margin-left:6px;font-weight:700;vertical-align:middle}
 .bal-pos{color:#1a8f4e;font-weight:700}.bal-neg{color:#c0392b;font-weight:700}.bal-zero{color:var(--muted);font-weight:600}
 .cat-badge{display:inline-block;padding:2px 8px;border-radius:20px;font-size:.7rem;font-weight:700}
 .paid-yes{color:var(--green);font-size:1.1rem}.paid-no{color:var(--red);font-size:1.1rem}
-.income-val{color:var(--income-fg);font-weight:700}.expense-val{color:var(--red)}
+.income-val{color:#15703c;font-weight:700}.expense-val{color:var(--red)}
 .unpaid-row td{opacity:.85}.unpaid-row .expense-val{color:#ff6b6b;text-shadow:0 0 8px #ff6b6b55}
 .empty{text-align:center;padding:50px 20px;color:var(--muted)}
 .empty .icon{font-size:3rem;margin-bottom:12px}
+/* ── Modals ── */
 .modal-overlay{position:fixed;inset:0;background:#000000cc;z-index:200;display:flex;align-items:flex-end;justify-content:center;opacity:0;pointer-events:none;transition:opacity .2s}
 .modal-overlay.open{opacity:1;pointer-events:all}
 .modal{background:var(--surface);width:100%;max-width:500px;border-radius:var(--radius) var(--radius) 0 0;padding:24px;max-height:92vh;overflow-y:auto;transform:translateY(40px);transition:transform .25s cubic-bezier(.4,0,.2,1)}
@@ -135,12 +140,14 @@ select option{background:var(--surface2)}
 .progress-bar{flex:1;height:6px;background:var(--surface2);border-radius:3px;overflow:hidden}
 .progress-fill{height:100%;background:linear-gradient(90deg,#1a6fa8,#0f4e7a);border-radius:3px;transition:width .5s}
 .progress-label{font-size:.78rem;color:var(--subtext);white-space:nowrap}
+/* ── Savings section ── */
 .savings-section{background:var(--surface);border-radius:var(--radius);border:1px solid var(--surface2);margin-top:16px;overflow:hidden}
 .savings-header{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;background:linear-gradient(135deg,#1a8a7a,#0e6b5a)}
 .savings-title{font-weight:700;font-size:.95rem;color:#fff;display:flex;align-items:center;gap:8px}
 .savings-total-badge{background:rgba(255,255,255,.22);color:#fff;padding:3px 11px;border-radius:20px;font-size:.82rem;font-weight:700;border:1px solid rgba(255,255,255,.3)}
 .savings-total-badge.negative{background:rgba(192,57,43,.4)}
 .savings-header-actions{display:flex;gap:6px}
+/* ── Debt modal items ── */
 .debt-item{background:var(--surface2);border-radius:var(--radius-sm);padding:12px 14px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
 .debt-item-info{flex:1}
 .debt-item-name{font-weight:700;font-size:.93rem;margin-bottom:2px}
@@ -151,7 +158,7 @@ select option{background:var(--surface2)}
 .debt-divider{border:none;border-top:1px solid var(--surface3);margin:16px 0}
 .debt-no-items{text-align:center;padding:18px;color:var(--muted);font-size:.88rem}
 .debt-remaining-cell{font-size:.75rem;color:#b02a1a;font-weight:600}
-/* Setup / Config modal — full-screen, higher z-index */
+/* ── Cloud setup ── */
 .setup-overlay{position:fixed;inset:0;background:linear-gradient(135deg,#0a1628,#1a3a5a);z-index:1000;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .3s}
 .setup-overlay.open{opacity:1;pointer-events:all}
 .setup-box{background:var(--surface);border-radius:var(--radius);padding:28px;max-width:460px;width:100%;border:1px solid var(--surface2);box-shadow:0 20px 60px #00000066}
@@ -160,7 +167,10 @@ select option{background:var(--surface2)}
 .setup-sub{font-size:.85rem;color:var(--subtext);text-align:center;margin-bottom:22px}
 .setup-hint{font-size:.78rem;color:var(--muted);margin-top:6px;line-height:1.5}
 .status-dot{width:8px;height:8px;border-radius:50%;display:inline-block;margin-right:6px}
-.status-dot.green{background:#1a8f4e}.status-dot.red{background:#c0392b}.status-dot.grey{background:var(--muted)}
+.status-dot.green{background:#1a8f4e}.status-dot.red{background:#c0392b}
+/* ── Savings row confirmed ── */
+.table-wrap tr.saving-confirmed td{background:#d4f0e4}
+.table-wrap tr.saving-confirmed:hover td{background:#c8ecd8}
 @media(max-width:640px){.table-wrap .hide-mobile{display:none}.summary-grid{grid-template-columns:repeat(3,1fr)}.toolbar .btn-text{display:none}.card-value{font-size:1.1rem}}
 ::-webkit-scrollbar{width:6px;height:6px}
 ::-webkit-scrollbar-track{background:var(--surface)}
@@ -283,7 +293,7 @@ select option{background:var(--surface2)}
     <div class="form-group full"><label>Debt Name</label><input id="d-name" type="text" placeholder="e.g. Credit Card, Car Finance…" autocomplete="off"></div>
     <div class="form-group"><label>Total Owed £</label><input id="d-total" type="number" step="0.01" min="0" placeholder="0.00"></div>
     <div class="form-group"><label>Monthly Payment £</label><input id="d-monthly" type="number" step="0.01" min="0" placeholder="0.00"></div>
-    <div class="form-group full"><label>Starting Month (first payment)</label><select id="d-startmonth"></select></div>
+    <div class="form-group full"><label>Starting Month</label><select id="d-startmonth"></select></div>
   </div>
   <div class="modal-footer">
     <button class="btn btn-ghost" onclick="closeDebtModal()">Close</button>
@@ -291,11 +301,30 @@ select option{background:var(--surface2)}
   </div>
 </div></div>
 
-<!-- Add Saving Modal -->
+<!-- Debt Payment Edit Modal -->
+<div class="modal-overlay" id="debtPayEditOverlay" onclick="closeDebtPayEdit(event)">
+<div class="modal" style="max-width:380px">
+  <div class="modal-header">
+    <span class="modal-title">✏️ Edit Payment Amount</span>
+    <button class="modal-close" onclick="closeDebtPayEdit()">×</button>
+  </div>
+  <p id="debtPayEditDesc" style="font-size:.88rem;color:var(--subtext);margin-bottom:16px"></p>
+  <div class="form-group full">
+    <label>Amount Paid This Month £</label>
+    <input id="dp-amount" type="number" step="0.01" min="0" placeholder="0.00">
+  </div>
+  <p style="font-size:.78rem;color:var(--muted);margin-top:8px">This only changes the display for this month. The debt schedule stays based on your original monthly amount.</p>
+  <div class="modal-footer">
+    <button class="btn btn-ghost" onclick="closeDebtPayEdit()">Cancel</button>
+    <button class="btn btn-primary" onclick="saveDebtPayEdit()">💾 Save</button>
+  </div>
+</div></div>
+
+<!-- Add/Edit Saving Modal -->
 <div class="modal-overlay" id="savingModalOverlay" onclick="closeSavingModal(event)">
 <div class="modal">
   <div class="modal-header">
-    <span class="modal-title">🏦 Savings Entry</span>
+    <span class="modal-title" id="savingModalTitle">🏦 Savings Entry</span>
     <button class="modal-close" onclick="closeSavingModal()">×</button>
   </div>
   <div class="form-grid">
@@ -315,7 +344,7 @@ select option{background:var(--surface2)}
   </div>
 </div></div>
 
-<!-- Cloud Setup / Config Modal -->
+<!-- Cloud Setup Modal -->
 <div class="setup-overlay" id="setupOverlay">
 <div class="setup-box">
   <div class="setup-logo">☁️</div>
@@ -330,7 +359,7 @@ select option{background:var(--surface2)}
     <div class="form-group full">
       <label>API Token</label>
       <input id="cfg-token" type="password" placeholder="Your secret token" autocomplete="off">
-      <div class="setup-hint">The password you set with: <code>wrangler secret put API_TOKEN</code></div>
+      <div class="setup-hint">The password you set as your Worker secret</div>
     </div>
   </div>
   <div id="cfgTestResult" style="margin-top:12px;font-size:.82rem;min-height:20px"></div>
@@ -345,7 +374,6 @@ select option{background:var(--surface2)}
 <input type="file" id="fileInput" accept=".json" style="display:none" onchange="handleFileLoad(event)">
 
 <script>
-// ─── MONTHS ───────────────────────────────────────────────────────────────────
 const MONTHS = [
   {id:'may_jun_26',label:'May',year:'2026'},{id:'jun_jul_26',label:'Jun',year:'2026'},
   {id:'jul_aug_26',label:'Jul',year:'2026'},{id:'aug_sep_26',label:'Aug',year:'2026'},
@@ -366,288 +394,152 @@ const MONTHS = [
   {id:'jan_feb_29',label:'Jan',year:'2029'},{id:'feb_mar_29',label:'Feb',year:'2029'},
   {id:'mar_apr_29',label:'Mar',year:'2029'},{id:'apr_may_29',label:'Apr',year:'2029'},
 ];
-const SEED = {};
+const SEED={};
 
-// ─── STATE ────────────────────────────────────────────────────────────────────
-let data = {};
-let currentMonth    = MONTHS[0].id;
-let selectedIdx     = null;
-let editingIdx      = null;
-let selectedSavingIdx = null;
+// ── STATE ──────────────────────────────────────────────────────────────────────
+let data={};
+let currentMonth=MONTHS[0].id;
+let selectedIdx=null;
+let editingIdx=null;
+let selectedSavingIdx=null;
+let editingSavingIdx=null;   // NEW — for editing savings entries
+let editDebtPayKey=null;     // NEW — for editing debt payment amount
 
-// ─── CLOUD CONFIG (stored in localStorage, NOT in source code) ────────────────
-const CONFIG_KEY = 'tomfinance_cfg';
-let workerUrl = '';
-let apiToken  = '';
-let isOfflineMode = false;
-let saveTimer;
+// ── CLOUD CONFIG ───────────────────────────────────────────────────────────────
+const CONFIG_KEY='tomfinance_cfg';
+let workerUrl='',apiToken='',isOfflineMode=false,saveTimer,statusTimer;
+function loadConfig(){try{const c=JSON.parse(localStorage.getItem(CONFIG_KEY)||'null');if(c){workerUrl=c.workerUrl||'';apiToken=c.apiToken||'';isOfflineMode=!!c.offline;}}catch(e){}}
+function persistConfig(u,t,o){localStorage.setItem(CONFIG_KEY,JSON.stringify({workerUrl:u,apiToken:t,offline:o}));}
+function showSaveStatus(s,m){const el=document.getElementById('saveStatus');el.className='save-status ss-'+s;const L={loading:'↺ Loading',saving:'☁ Saving…',saved:'✔ Saved',error:'⚠ Save Failed',offline:'⚠ Offline',local:'● Local Only'};el.textContent=m||L[s]||s;clearTimeout(statusTimer);if(s==='saved')statusTimer=setTimeout(()=>{el.textContent='✔ Cloud';},3000);}
 
-function loadConfig() {
-  try {
-    const c = JSON.parse(localStorage.getItem(CONFIG_KEY) || 'null');
-    if (c) { workerUrl = c.workerUrl || ''; apiToken = c.apiToken || ''; isOfflineMode = !!c.offline; }
-  } catch(e) {}
-}
-
-function persistConfig(url, token, offline) {
-  localStorage.setItem(CONFIG_KEY, JSON.stringify({ workerUrl: url, apiToken: token, offline }));
-}
-
-// ─── SAVE STATUS INDICATOR ────────────────────────────────────────────────────
-let statusTimer;
-function showSaveStatus(state, msg) {
-  const el = document.getElementById('saveStatus');
-  el.className = 'save-status ss-' + state;
-  const labels = {
-    loading:'↺ Loading', saving:'☁ Saving…', saved:'✔ Saved',
-    error:'⚠ Save Failed', offline:'⚠ Offline', local:'● Local Only'
-  };
-  el.textContent = msg || labels[state] || state;
-  clearTimeout(statusTimer);
-  if (state === 'saved') statusTimer = setTimeout(() => { el.textContent = '✔ Cloud'; }, 3000);
-}
-
-// ─── HELPERS ─────────────────────────────────────────────────────────────────
-function genId() { return Date.now().toString(36) + Math.random().toString(36).slice(2,6); }
-function ddmmToISO(s) { if(!s)return''; const p=s.split('/'); return p.length===3?`${p[2]}-${p[1].padStart(2,'0')}-${p[0].padStart(2,'0')}`:s; }
-function isoToDDMM(s) { if(!s)return''; const p=s.split('-'); return p.length===3?`${p[2]}/${p[1]}/${p[0]}`:s; }
-function escHtml(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+// ── HELPERS ────────────────────────────────────────────────────────────────────
+function genId(){return Date.now().toString(36)+Math.random().toString(36).slice(2,6);}
+function ddmmToISO(s){if(!s)return'';const p=s.split('/');return p.length===3?`${p[2]}-${p[1].padStart(2,'0')}-${p[0].padStart(2,'0')}`:s;}
+function isoToDDMM(s){if(!s)return'';const p=s.split('-');return p.length===3?`${p[2]}/${p[1]}/${p[0]}`:s;}
+function escHtml(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
 let toastTimer;
-function toast(msg) {
-  const el = document.getElementById('toast');
-  el.textContent = msg; el.classList.add('show');
-  clearTimeout(toastTimer);
-  toastTimer = setTimeout(() => el.classList.remove('show'), 2800);
-}
+function toast(msg){const el=document.getElementById('toast');el.textContent=msg;el.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.classList.remove('show'),2800);}
 
-// ─── INIT ─────────────────────────────────────────────────────────────────────
-async function init() {
+// ── INIT ───────────────────────────────────────────────────────────────────────
+async function init(){
   loadConfig();
-
-  if (!workerUrl || !apiToken) {
-    // No config yet — check for old localStorage data to migrate later
-    showSetupModal();
-    return;
-  }
-
+  if(!workerUrl||!apiToken){showSetupModal();return;}
   showSaveStatus('loading');
-  try {
-    const res = await fetch(workerUrl + '/api/data', {
-      headers: { 'Authorization': 'Bearer ' + apiToken }
-    });
-    if (!res.ok) throw new Error('HTTP ' + res.status);
-    const cloudData = await res.json();
-
-    if (cloudData) {
-      data = cloudData;
-      // Migration: add new keys if old save is missing them
-      if (!data._debts)   data._debts   = [];
-      if (!data._savings) data._savings = [];
-    } else {
-      // KV is empty — check for legacy localStorage data to migrate
-      const legacy = localStorage.getItem('tomfinance_3yr') || localStorage.getItem('tomfinance_3yr_backup');
-      if (legacy) {
-        try {
-          data = JSON.parse(legacy);
-          if (!data._debts)   data._debts   = [];
-          if (!data._savings) data._savings = [];
-          toast('📤 Migrating local data to cloud…');
-          scheduleSave();
-        } catch(e) { seedData(); }
-      } else {
-        seedData();
-      }
+  try{
+    const res=await fetch(workerUrl+'/api/data',{headers:{'Authorization':'Bearer '+apiToken}});
+    if(!res.ok)throw new Error('HTTP '+res.status);
+    const cd=await res.json();
+    if(cd){data=cd;migrate();}
+    else{
+      const leg=localStorage.getItem('tomfinance_3yr_backup')||localStorage.getItem('tomfinance_3yr');
+      if(leg){try{data=JSON.parse(leg);migrate();toast('📤 Migrating local data to cloud…');scheduleSave();}catch(e){seedData();}}
+      else seedData();
     }
-    isOfflineMode = false;
-    showSaveStatus('saved', '✔ Cloud');
-  } catch(err) {
-    // Cloud unreachable — fall back to local backup
-    const backup = localStorage.getItem('tomfinance_3yr_backup');
-    if (backup) {
-      try {
-        data = JSON.parse(backup);
-        if (!data._debts)   data._debts   = [];
-        if (!data._savings) data._savings = [];
-      } catch(e) { seedData(); }
-    } else { seedData(); }
-    showSaveStatus('offline');
-    toast('⚠ Cloud unreachable — using local backup');
+    isOfflineMode=false;showSaveStatus('saved','✔ Cloud');
+  }catch(err){
+    const b=localStorage.getItem('tomfinance_3yr_backup');
+    if(b){try{data=JSON.parse(b);migrate();}catch(e){seedData();}}else seedData();
+    showSaveStatus('offline');toast('⚠ Cloud unreachable — using local backup');
   }
-
-  buildTabs();
-  showMonth(MONTHS[0].id);
-  renderSavings();
+  buildTabs();showMonth(MONTHS[0].id);renderSavings();
 }
+function migrate(){if(!data._debts)data._debts=[];if(!data._savings)data._savings=[];if(!data._debtPayments)data._debtPayments={};}
+function seedData(){data={_debts:[],_savings:[],_debtPayments:{}};MONTHS.forEach(m=>{data[m.id]=[];});}
 
-function seedData() {
-  data = { _debts: [], _savings: [] };
-  MONTHS.forEach(m => { data[m.id] = []; });
-}
-
-// ─── CLOUD SETUP MODAL ────────────────────────────────────────────────────────
-function showSetupModal(isEdit) {
-  document.getElementById('cfg-url').value   = workerUrl || '';
-  document.getElementById('cfg-token').value = '';
-  document.getElementById('cfgTestResult').innerHTML = '';
-  document.getElementById('setupSubText').textContent = isEdit
-    ? 'Update your Cloudflare Worker connection details.'
-    : 'Connect your Cloudflare Worker to sync data across all your devices.';
+// ── SETUP MODAL ───────────────────────────────────────────────────────────────
+function showSetupModal(isEdit){
+  document.getElementById('cfg-url').value=workerUrl||'';
+  document.getElementById('cfg-token').value='';
+  document.getElementById('cfgTestResult').innerHTML='';
+  document.getElementById('setupSubText').textContent=isEdit?'Update your Cloudflare Worker connection details.':'Connect your Cloudflare Worker to sync data across all your devices.';
   document.getElementById('setupOverlay').classList.add('open');
-
-  if (!isEdit) {
-    // Still load the app in offline mode while setup modal is shown
-    const backup = localStorage.getItem('tomfinance_3yr_backup') || localStorage.getItem('tomfinance_3yr');
-    if (backup) {
-      try { data = JSON.parse(backup); if(!data._debts)data._debts=[]; if(!data._savings)data._savings=[]; }
-      catch(e) { seedData(); }
-    } else { seedData(); }
-    isOfflineMode = true;
-    showSaveStatus('local', '● Local Only');
-    buildTabs(); showMonth(MONTHS[0].id); renderSavings();
+  if(!isEdit){
+    const b=localStorage.getItem('tomfinance_3yr_backup')||localStorage.getItem('tomfinance_3yr');
+    if(b){try{data=JSON.parse(b);migrate();}catch(e){seedData();}}else seedData();
+    isOfflineMode=true;showSaveStatus('local','● Local Only');
+    buildTabs();showMonth(MONTHS[0].id);renderSavings();
   }
 }
-
-function openSetup() { showSetupModal(true); }
-
-async function testConnection() {
-  const url   = document.getElementById('cfg-url').value.trim().replace(/\/$/,'');
-  const token = document.getElementById('cfg-token').value.trim();
-  const result = document.getElementById('cfgTestResult');
-  const btn = document.getElementById('testBtn');
-  if (!url || !token) { result.innerHTML = '<span style="color:var(--red)">⚠ Enter URL and token first</span>'; return; }
-  btn.textContent = '🔌 Testing…'; btn.disabled = true;
-  try {
-    const res = await fetch(url + '/api/ping', { headers: { 'Authorization': 'Bearer ' + token } });
-    if (res.ok) {
-      result.innerHTML = '<span class="status-dot green"></span><strong style="color:var(--green)">Connected!</strong> Worker is reachable and token is correct.';
-    } else {
-      result.innerHTML = `<span class="status-dot red"></span><strong style="color:var(--red)">Failed</strong> — HTTP ${res.status}. Check your token.`;
-    }
-  } catch(e) {
-    result.innerHTML = `<span class="status-dot red"></span><strong style="color:var(--red)">Unreachable</strong> — Check the Worker URL is correct.`;
-  }
-  btn.textContent = '🔌 Test'; btn.disabled = false;
+function openSetup(){showSetupModal(true);}
+async function testConnection(){
+  const url=document.getElementById('cfg-url').value.trim().replace(/\/$/,'');
+  const token=document.getElementById('cfg-token').value.trim();
+  const result=document.getElementById('cfgTestResult');
+  const btn=document.getElementById('testBtn');
+  if(!url||!token){result.innerHTML='<span style="color:var(--red)">⚠ Enter URL and token first</span>';return;}
+  btn.textContent='🔌 Testing…';btn.disabled=true;
+  try{
+    const res=await fetch(url+'/api/ping',{headers:{'Authorization':'Bearer '+token}});
+    result.innerHTML=res.ok?'<span class="status-dot green"></span><strong style="color:var(--green)">Connected! Worker is reachable ✔</strong>':
+      `<span class="status-dot red"></span><strong style="color:var(--red)">Failed — HTTP ${res.status}. Check your token.</strong>`;
+  }catch(e){result.innerHTML='<span class="status-dot red"></span><strong style="color:var(--red)">Unreachable — check the Worker URL.</strong>';}
+  btn.textContent='🔌 Test';btn.disabled=false;
 }
-
-async function saveConfig() {
-  const url   = document.getElementById('cfg-url').value.trim().replace(/\/$/,'');
-  const token = document.getElementById('cfg-token').value.trim();
-  if (!url)   { document.getElementById('cfg-url').focus();   return; }
-  if (!token) { document.getElementById('cfg-token').focus(); return; }
-  workerUrl = url; apiToken = token; isOfflineMode = false;
-  persistConfig(url, token, false);
+async function saveConfig(){
+  const url=document.getElementById('cfg-url').value.trim().replace(/\/$/,'');
+  const token=document.getElementById('cfg-token').value.trim();
+  if(!url){document.getElementById('cfg-url').focus();return;}
+  if(!token){document.getElementById('cfg-token').focus();return;}
+  workerUrl=url;apiToken=token;isOfflineMode=false;persistConfig(url,token,false);
   document.getElementById('setupOverlay').classList.remove('open');
-  // Re-run init to load from cloud with new credentials
   await init();
 }
-
-function setupOffline() {
-  isOfflineMode = true;
-  persistConfig(workerUrl, apiToken, true);
+function setupOffline(){
+  isOfflineMode=true;persistConfig(workerUrl,apiToken,true);
   document.getElementById('setupOverlay').classList.remove('open');
-  showSaveStatus('local', '● Local Only');
-  if (Object.keys(data).length <= 2) { // only _debts and _savings
-    const backup = localStorage.getItem('tomfinance_3yr_backup') || localStorage.getItem('tomfinance_3yr');
-    if (backup) { try { data = JSON.parse(backup); if(!data._debts)data._debts=[]; if(!data._savings)data._savings=[]; } catch(e) { seedData(); } }
-    else seedData();
-    buildTabs(); showMonth(MONTHS[0].id); renderSavings();
-  }
+  showSaveStatus('local','● Local Only');
+  if(Object.keys(data).length<=3){const b=localStorage.getItem('tomfinance_3yr_backup')||localStorage.getItem('tomfinance_3yr');if(b){try{data=JSON.parse(b);migrate();}catch(e){seedData();}}else seedData();buildTabs();showMonth(MONTHS[0].id);renderSavings();}
 }
 
-// ─── SAVE (local backup + debounced cloud save) ────────────────────────────────
-function saveLocal() {
-  // Always keep a local backup in case of offline/error
-  localStorage.setItem('tomfinance_3yr_backup', JSON.stringify(data));
-  if (!isOfflineMode && workerUrl && apiToken) {
-    scheduleSave();
-  }
+// ── SAVE ──────────────────────────────────────────────────────────────────────
+function saveLocal(){localStorage.setItem('tomfinance_3yr_backup',JSON.stringify(data));if(!isOfflineMode&&workerUrl&&apiToken)scheduleSave();}
+function scheduleSave(){clearTimeout(saveTimer);showSaveStatus('saving');saveTimer=setTimeout(doCloudSave,1200);}
+async function doCloudSave(){
+  try{
+    const res=await fetch(workerUrl+'/api/data',{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+apiToken},body:JSON.stringify(data)});
+    if(res.ok)showSaveStatus('saved');else{showSaveStatus('error');toast('⚠ Cloud save failed — saved locally');}
+  }catch(e){showSaveStatus('error');toast('⚠ Cloud unreachable — saved locally');}
 }
 
-function scheduleSave() {
-  clearTimeout(saveTimer);
-  showSaveStatus('saving');
-  saveTimer = setTimeout(doCloudSave, 1200);
-}
-
-async function doCloudSave() {
-  try {
-    const res = await fetch(workerUrl + '/api/data', {
-      method:  'POST',
-      headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + apiToken },
-      body:    JSON.stringify(data),
-    });
-    if (res.ok) {
-      showSaveStatus('saved');
-    } else {
-      showSaveStatus('error');
-      toast('⚠ Cloud save failed — data saved locally');
-    }
-  } catch(e) {
-    showSaveStatus('error');
-    toast('⚠ Cloud unreachable — data saved locally');
-  }
-}
-
-// ─── TABS ─────────────────────────────────────────────────────────────────────
-function buildTabs() {
-  const nav = document.getElementById('monthsTabs');
-  nav.innerHTML = '';
-  let lastYear = '';
-  MONTHS.forEach(m => {
-    if (m.year !== lastYear) {
-      const sep = document.createElement('span');
-      sep.className = 'year-sep'; sep.textContent = m.year;
-      nav.appendChild(sep); lastYear = m.year;
-    }
-    const btn = document.createElement('button');
-    btn.className = 'month-tab' + ((data[m.id]||[]).length > 0 ? ' has-data' : '');
-    btn.textContent = m.label; btn.title = m.label + ' ' + m.year;
-    btn.onclick = () => showMonth(m.id); btn.id = 'tab_' + m.id;
-    nav.appendChild(btn);
+// ── TABS ──────────────────────────────────────────────────────────────────────
+function buildTabs(){
+  const nav=document.getElementById('monthsTabs');nav.innerHTML='';let lastYear='';
+  MONTHS.forEach(m=>{
+    if(m.year!==lastYear){const sep=document.createElement('span');sep.className='year-sep';sep.textContent=m.year;nav.appendChild(sep);lastYear=m.year;}
+    const btn=document.createElement('button');
+    btn.className='month-tab'+((data[m.id]||[]).length>0?' has-data':'');
+    btn.textContent=m.label;btn.title=m.label+' '+m.year;
+    btn.onclick=()=>showMonth(m.id);btn.id='tab_'+m.id;nav.appendChild(btn);
   });
 }
+function showMonth(id){currentMonth=id;selectedIdx=null;document.querySelectorAll('.month-tab').forEach(t=>t.classList.remove('active'));const tab=document.getElementById('tab_'+id);if(tab){tab.classList.add('active');tab.scrollIntoView({inline:'nearest',behavior:'smooth'});}renderSummary();renderTable();}
 
-function showMonth(id) {
-  currentMonth = id; selectedIdx = null;
-  document.querySelectorAll('.month-tab').forEach(t => t.classList.remove('active'));
-  const tab = document.getElementById('tab_' + id);
-  if (tab) { tab.classList.add('active'); tab.scrollIntoView({inline:'nearest',behavior:'smooth'}); }
-  renderSummary(); renderTable();
-}
-
-// ─── DEBT LOGIC ───────────────────────────────────────────────────────────────
-function getDebtPaymentsForMonth(monthIdx) {
-  return (data._debts||[]).reduce((acc, debt) => {
-    const n = monthIdx - debt.startMonthIdx;
-    if (n < 0) return acc;
-    const remainBefore = Math.max(0, debt.total - n * debt.monthly);
-    if (remainBefore <= 0) return acc;
-    const payment = Math.min(debt.monthly, remainBefore);
-    acc.push({ id:debt.id, name:debt.name, payment, remainingAfter: Math.max(0,remainBefore-payment) });
+// ── DEBT LOGIC ────────────────────────────────────────────────────────────────
+function getDebtPaymentsForMonth(monthIdx){
+  const overrides=data._debtPayments||{};
+  return (data._debts||[]).reduce((acc,debt)=>{
+    const n=monthIdx-debt.startMonthIdx;if(n<0)return acc;
+    const remainBefore=Math.max(0,debt.total-n*debt.monthly);if(remainBefore<=0)return acc;
+    const key=`${debt.id}_${monthIdx}`;
+    const ov=overrides[key]||{};
+    const payment=ov.override!=null?ov.override:Math.min(debt.monthly,remainBefore);
+    const confirmed=!!ov.confirmed;
+    acc.push({id:debt.id,name:debt.name,payment,remainingAfter:Math.max(0,remainBefore-Math.min(debt.monthly,remainBefore)),confirmed,key});
     return acc;
-  }, []);
+  },[]);
 }
+function getTotalDebtRemaining(monthIdx){return(data._debts||[]).reduce((sum,debt)=>{const n=monthIdx-debt.startMonthIdx;return sum+(n<0?debt.total:Math.max(0,debt.total-n*debt.monthly));},0);}
 
-function getTotalDebtRemaining(monthIdx) {
-  return (data._debts||[]).reduce((sum, debt) => {
-    const n = monthIdx - debt.startMonthIdx;
-    return sum + (n < 0 ? debt.total : Math.max(0, debt.total - n * debt.monthly));
-  }, 0);
-}
-
-// ─── SUMMARY ──────────────────────────────────────────────────────────────────
-function renderSummary() {
-  const txns     = data[currentMonth] || [];
-  const monthIdx = MONTHS.findIndex(m => m.id === currentMonth);
-  const inc      = txns.reduce((s,t) => s + (t.income||0), 0);
-  const exp      = txns.reduce((s,t) => s + (t.expense||0), 0);
-  const paid     = txns.reduce((s,t) => s + (t.paid ? (t.expense||0) : 0), 0);
-  const unpaid   = exp - paid;
-  const debtPmts = getDebtPaymentsForMonth(monthIdx).reduce((s,d) => s+d.payment, 0);
-  const debtRem  = getTotalDebtRemaining(monthIdx);
-  const savings  = (data._savings||[]).reduce((s,e) => s+(e.type==='deposit'?e.amount:-e.amount), 0);
-  const bal      = inc - exp - debtPmts;
-  document.getElementById('summaryGrid').innerHTML = `
+// ── SUMMARY ───────────────────────────────────────────────────────────────────
+function renderSummary(){
+  const txns=data[currentMonth]||[];const monthIdx=MONTHS.findIndex(m=>m.id===currentMonth);
+  const inc=txns.reduce((s,t)=>s+(t.income||0),0);const exp=txns.reduce((s,t)=>s+(t.expense||0),0);
+  const paid=txns.reduce((s,t)=>s+(t.paid?(t.expense||0):0),0);const unpaid=exp-paid;
+  const debtPmts=getDebtPaymentsForMonth(monthIdx).reduce((s,d)=>s+d.payment,0);
+  const debtRem=getTotalDebtRemaining(monthIdx);
+  const savings=(data._savings||[]).reduce((s,e)=>s+(e.type==='deposit'?e.amount:-e.amount),0);
+  const bal=inc-exp-debtPmts;
+  document.getElementById('summaryGrid').innerHTML=`
     <div class="card"><div class="card-label">💰 Income</div><div class="card-value green">£${inc.toFixed(2)}</div></div>
     <div class="card"><div class="card-label">💸 Expenses</div><div class="card-value red">£${exp.toFixed(2)}</div></div>
     <div class="card"><div class="card-label">💳 Debt Pmts</div><div class="card-value red">£${debtPmts.toFixed(2)}</div></div>
@@ -656,50 +548,31 @@ function renderSummary() {
     <div class="card"><div class="card-label">⏳ Outstanding</div><div class="card-value orange">£${unpaid.toFixed(2)}</div></div>
     <div class="card"><div class="card-label">💳 Total Debt</div><div class="card-value ${debtRem>0?'red':'teal'}">£${debtRem.toFixed(2)}</div></div>
     <div class="card"><div class="card-label">🏦 Savings</div><div class="card-value ${savings>=0?'teal':'red'}">£${savings.toFixed(2)}</div></div>`;
-  const mIdx = MONTHS.findIndex(m => m.id === currentMonth);
-  if (mIdx >= 0) {
-    document.getElementById('yearProgress').style.display='flex';
-    const p = Math.round((mIdx/(MONTHS.length-1))*100);
-    document.getElementById('progressFill').style.width = p+'%';
-    document.getElementById('progressLabel').textContent = 'Month '+(mIdx+1)+' of '+MONTHS.length;
-    document.getElementById('progressPct').textContent   = p+'% through plan';
-  }
+  const mIdx=MONTHS.findIndex(m=>m.id===currentMonth);
+  if(mIdx>=0){document.getElementById('yearProgress').style.display='flex';const p=Math.round((mIdx/(MONTHS.length-1))*100);document.getElementById('progressFill').style.width=p+'%';document.getElementById('progressLabel').textContent='Month '+(mIdx+1)+' of '+MONTHS.length;document.getElementById('progressPct').textContent=p+'% through plan';}
 }
 
-// ─── TABLE ────────────────────────────────────────────────────────────────────
-const CAT_ROW = {
-  'Income':'row-income','Housing':'row-housing','Energy':'row-energy','Utils':'row-utils',
-  'Car Tax':'row-car','Car insuance':'row-car','phone':'row-phone','internet':'row-phone',
-  'Sub':'row-sub','Dept':'row-debt','Loan':'row-loan','Lend':'row-lend',
-  'OverDraft':'row-loan','Spent':'row-spent'
-};
-const CAT_COL = {
-  'Income':'#2ecc71','Housing':'#5dade2','Energy':'#e67e22','Utils':'#1abc9c',
-  'Car Tax':'#af7ac5','Car insuance':'#af7ac5','phone':'#8be9fd','internet':'#8be9fd',
-  'Sub':'#bac2de','Dept':'#e74c3c','Loan':'#ff5555','Lend':'#ff6b6b',
-  'OverDraft':'#ff5555','Spent':'#f39c12','Other':'#6c7086'
-};
+// ── TABLE (with checkboxes + debt confirm/edit) ───────────────────────────────
+const CAT_ROW={'Income':'row-income','Housing':'row-housing','Energy':'row-energy','Utils':'row-utils','Car Tax':'row-car','Car insuance':'row-car','phone':'row-phone','internet':'row-phone','Sub':'row-sub','Dept':'row-debt','Loan':'row-loan','Lend':'row-lend','OverDraft':'row-loan','Spent':'row-spent'};
+const CAT_COL={'Income':'#2ecc71','Housing':'#5dade2','Energy':'#e67e22','Utils':'#1abc9c','Car Tax':'#af7ac5','Car insuance':'#af7ac5','phone':'#8be9fd','internet':'#8be9fd','Sub':'#bac2de','Dept':'#e74c3c','Loan':'#ff5555','Lend':'#ff6b6b','OverDraft':'#ff5555','Spent':'#f39c12','Other':'#6c7086'};
 
-function renderTable() {
-  const txns      = data[currentMonth] || [];
-  const monthIdx  = MONTHS.findIndex(m => m.id === currentMonth);
-  const debtPmts  = getDebtPaymentsForMonth(monthIdx);
-  const wrap      = document.getElementById('tableWrap');
-  if (txns.length === 0 && debtPmts.length === 0) {
-    wrap.innerHTML = `<div class="empty"><div class="icon">📭</div><p>No transactions yet</p><p style="font-size:.83rem;margin-top:8px;color:var(--muted)">Tap + to add one, or Copy Last Month</p></div>`;
-    return;
-  }
-  let runBal = 0, rows = '';
-  txns.forEach((t,i) => {
-    runBal += (t.income||0)-(t.expense||0);
-    const bc = runBal>0?'bal-pos':runBal<0?'bal-neg':'bal-zero';
-    const rc = (CAT_ROW[t.category]||'')+(!t.paid&&t.expense>0?' unpaid-row':'');
-    const cc = CAT_COL[t.category]||'#6c7086';
-    const inV  = t.income  > 0 ? `<span class="income-val">£${t.income.toFixed(2)}</span>`  : '<span style="color:var(--muted)">—</span>';
-    const exV  = t.expense > 0 ? `<span class="expense-val">£${t.expense.toFixed(2)}</span>` : '<span style="color:var(--muted)">—</span>';
-    const pI   = t.paid ? '<span class="paid-yes">✔</span>' : '<span class="paid-no">✖</span>';
-    const sel  = selectedIdx===i ? ' selected':'';
-    rows += `<tr class="${rc}${sel}" onclick="selectRow(${i})" ondblclick="openEdit()">
+function renderTable(){
+  const txns=data[currentMonth]||[];const monthIdx=MONTHS.findIndex(m=>m.id===currentMonth);
+  const debtPmts=getDebtPaymentsForMonth(monthIdx);const wrap=document.getElementById('tableWrap');
+  if(txns.length===0&&debtPmts.length===0){wrap.innerHTML=`<div class="empty"><div class="icon">📭</div><p>No transactions yet</p><p style="font-size:.83rem;margin-top:8px;color:var(--muted)">Tap + to add one</p></div>`;return;}
+  let runBal=0,rows='';
+  // ── Manual transaction rows ──
+  txns.forEach((t,i)=>{
+    runBal+=(t.income||0)-(t.expense||0);
+    const bc=runBal>0?'bal-pos':runBal<0?'bal-neg':'bal-zero';
+    const rc=(CAT_ROW[t.category]||'')+(!t.paid&&t.expense>0?' unpaid-row':'');
+    const cc=CAT_COL[t.category]||'#6c7086';
+    const inV=t.income>0?`<span class="income-val">£${t.income.toFixed(2)}</span>`:'<span style="color:var(--muted)">—</span>';
+    const exV=t.expense>0?`<span class="expense-val">£${t.expense.toFixed(2)}</span>`:'<span style="color:var(--muted)">—</span>';
+    const pI=t.paid?'<span class="paid-yes">✔</span>':'<span class="paid-no">✖</span>';
+    const isSel=selectedIdx===i;
+    rows+=`<tr class="${rc}${isSel?' selected':''}" onclick="selectRow(${i})" ondblclick="openEdit()">
+      <td class="cb-cell"><div class="cb${isSel?' checked':''}">${isSel?'✔':''}</div></td>
       <td class="hide-mobile" style="color:var(--muted);font-size:.8rem">${t.date||''}</td>
       <td><strong>${escHtml(t.description)}</strong></td>
       <td class="hide-mobile"><span class="cat-badge" style="background:${cc}22;color:${cc}">${escHtml(t.category||'—')}</span></td>
@@ -709,15 +582,20 @@ function renderTable() {
       <td class="num ${bc}">£${runBal.toFixed(2)}</td>
     </tr>`;
   });
-  debtPmts.forEach(dp => {
-    runBal -= dp.payment;
-    const bc = runBal>0?'bal-pos':runBal<0?'bal-neg':'bal-zero';
-    const rem = dp.remainingAfter > 0
-      ? `<small class="debt-remaining-cell">£${dp.remainingAfter.toFixed(2)} left</small>`
-      : `<small style="color:var(--green);font-weight:700;font-size:.72rem">✔ PAID OFF</small>`;
-    rows += `<tr class="debt-auto-row">
+  // ── Auto debt payment rows ──
+  debtPmts.forEach(dp=>{
+    runBal-=dp.payment;
+    const bc=runBal>0?'bal-pos':runBal<0?'bal-neg':'bal-zero';
+    const rem=dp.remainingAfter>0?`<small class="debt-remaining-cell">£${dp.remainingAfter.toFixed(2)} left</small>`:`<small style="color:var(--green);font-weight:700;font-size:.72rem">✔ PAID OFF</small>`;
+    const rowCls=dp.confirmed?'debt-confirmed-row':'debt-auto-row';
+    const confirmBtn=dp.confirmed
+      ?`<button class="row-action-btn rab-confirmed" onclick="event.stopPropagation()">✔ Confirmed</button>`
+      :`<button class="row-action-btn rab-confirm" onclick="event.stopPropagation();confirmDebtPayment('${dp.key}')">✔ Confirm</button>`;
+    const editBtn=`<button class="row-action-btn rab-edit" onclick="event.stopPropagation();openDebtPayEdit('${dp.key}','${escHtml(dp.name)}',${dp.payment})">✏</button>`;
+    rows+=`<tr class="${rowCls}">
+      <td class="cb-cell"><div class="cb" style="border-color:#e74c3c;opacity:.4"></div></td>
       <td class="hide-mobile" style="color:var(--muted);font-size:.75rem">Auto</td>
-      <td><strong>📉 ${escHtml(dp.name)}</strong><span class="auto-badge">AUTO</span></td>
+      <td><strong>📉 ${escHtml(dp.name)}</strong>${dp.confirmed?'':'<span class="auto-badge">AUTO</span>'}<br><span style="white-space:nowrap">${confirmBtn}${editBtn}</span></td>
       <td class="hide-mobile"><span class="cat-badge" style="background:#e74c3c22;color:#e74c3c">Debt</span></td>
       <td class="hide-mobile" style="color:var(--muted);font-size:.82rem">Auto</td>
       <td class="num"><span style="color:var(--muted)">—</span></td>
@@ -726,88 +604,80 @@ function renderTable() {
       <td class="num ${bc}">£${runBal.toFixed(2)}</td>
     </tr>`;
   });
-  wrap.innerHTML = `<table><thead><tr>
+  wrap.innerHTML=`<table><thead><tr>
+    <th style="width:42px"></th>
     <th class="hide-mobile">Date</th><th>Description</th>
     <th class="hide-mobile">Category</th><th class="hide-mobile">Method</th>
     <th class="num">In £</th><th class="num">Out £</th>
-    <th style="text-align:center">Paid / Rem.</th><th class="num">Balance £</th>
+    <th style="text-align:center">Paid</th><th class="num">Balance £</th>
   </tr></thead><tbody>${rows}</tbody></table>`;
 }
 
-function selectRow(i) { selectedIdx = (selectedIdx===i)?null:i; renderTable(); }
+// ── ROW SELECTION ─────────────────────────────────────────────────────────────
+function selectRow(i){selectedIdx=(selectedIdx===i)?null:i;renderTable();}
 
-// ─── MODAL ────────────────────────────────────────────────────────────────────
-function openAdd() {
-  editingIdx = null;
-  document.getElementById('modalTitle').textContent = '➕ Add Transaction';
-  document.getElementById('f-desc').value=''; document.getElementById('f-date').value=new Date().toISOString().slice(0,10);
-  document.getElementById('f-cat').value=''; document.getElementById('f-pay').value='';
-  document.getElementById('f-income').value=''; document.getElementById('f-expense').value='';
-  document.getElementById('f-paid').checked=false;
-  document.getElementById('modalOverlay').classList.add('open');
-  setTimeout(()=>document.getElementById('f-desc').focus(),300);
+// ── DEBT PAYMENT CONFIRM ──────────────────────────────────────────────────────
+function confirmDebtPayment(key){
+  if(!data._debtPayments)data._debtPayments={};
+  const current=data._debtPayments[key]||{};
+  data._debtPayments[key]={...current,confirmed:!current.confirmed};
+  saveLocal();renderTable();renderSummary();
+  toast(data._debtPayments[key].confirmed?'✔ Payment confirmed!':'Payment unconfirmed');
 }
-function openEdit() {
-  if (selectedIdx===null){toast('Select a row first');return;}
-  editingIdx = selectedIdx;
-  const t=(data[currentMonth]||[])[editingIdx]; if(!t)return;
-  document.getElementById('modalTitle').textContent='✏️ Edit Transaction';
-  document.getElementById('f-desc').value=t.description; document.getElementById('f-date').value=ddmmToISO(t.date);
-  document.getElementById('f-cat').value=t.category; document.getElementById('f-pay').value=t.pay_method;
-  document.getElementById('f-income').value=t.income||''; document.getElementById('f-expense').value=t.expense||'';
-  document.getElementById('f-paid').checked=t.paid;
-  document.getElementById('modalOverlay').classList.add('open');
+
+// ── DEBT PAYMENT EDIT ─────────────────────────────────────────────────────────
+function openDebtPayEdit(key,name,currentAmt){
+  editDebtPayKey=key;
+  document.getElementById('debtPayEditDesc').textContent=`Editing payment for: ${name}. Current amount: £${parseFloat(currentAmt).toFixed(2)}`;
+  document.getElementById('dp-amount').value=parseFloat(currentAmt).toFixed(2);
+  document.getElementById('debtPayEditOverlay').classList.add('open');
+  setTimeout(()=>document.getElementById('dp-amount').focus(),300);
 }
-function closeModal(e) { if(e&&e.target!==document.getElementById('modalOverlay'))return; document.getElementById('modalOverlay').classList.remove('open'); }
-function saveTransaction() {
-  const desc=document.getElementById('f-desc').value.trim(); if(!desc){document.getElementById('f-desc').focus();return;}
-  const t={
-    date:document.getElementById('f-date').value?isoToDDMM(document.getElementById('f-date').value):'',
-    description:desc, category:document.getElementById('f-cat').value, pay_method:document.getElementById('f-pay').value,
-    income:parseFloat(document.getElementById('f-income').value)||0, expense:parseFloat(document.getElementById('f-expense').value)||0,
-    paid:document.getElementById('f-paid').checked
-  };
+function closeDebtPayEdit(e){if(e&&e.target!==document.getElementById('debtPayEditOverlay'))return;document.getElementById('debtPayEditOverlay').classList.remove('open');editDebtPayKey=null;}
+function saveDebtPayEdit(){
+  if(!editDebtPayKey)return;
+  const amt=parseFloat(document.getElementById('dp-amount').value)||0;
+  if(amt<0){toast('Amount cannot be negative');return;}
+  if(!data._debtPayments)data._debtPayments={};
+  const current=data._debtPayments[editDebtPayKey]||{};
+  data._debtPayments[editDebtPayKey]={...current,override:amt};
+  saveLocal();document.getElementById('debtPayEditOverlay').classList.remove('open');editDebtPayKey=null;
+  renderTable();renderSummary();toast('💳 Payment amount updated ✔');
+}
+
+// ── TRANSACTION MODAL ─────────────────────────────────────────────────────────
+function openAdd(){editingIdx=null;document.getElementById('modalTitle').textContent='➕ Add Transaction';document.getElementById('f-desc').value='';document.getElementById('f-date').value=new Date().toISOString().slice(0,10);document.getElementById('f-cat').value='';document.getElementById('f-pay').value='';document.getElementById('f-income').value='';document.getElementById('f-expense').value='';document.getElementById('f-paid').checked=false;document.getElementById('modalOverlay').classList.add('open');setTimeout(()=>document.getElementById('f-desc').focus(),300);}
+function openEdit(){if(selectedIdx===null){toast('Select a row first');return;}editingIdx=selectedIdx;const t=(data[currentMonth]||[])[editingIdx];if(!t)return;document.getElementById('modalTitle').textContent='✏️ Edit Transaction';document.getElementById('f-desc').value=t.description;document.getElementById('f-date').value=ddmmToISO(t.date);document.getElementById('f-cat').value=t.category;document.getElementById('f-pay').value=t.pay_method;document.getElementById('f-income').value=t.income||'';document.getElementById('f-expense').value=t.expense||'';document.getElementById('f-paid').checked=t.paid;document.getElementById('modalOverlay').classList.add('open');}
+function closeModal(e){if(e&&e.target!==document.getElementById('modalOverlay'))return;document.getElementById('modalOverlay').classList.remove('open');}
+function saveTransaction(){
+  const desc=document.getElementById('f-desc').value.trim();if(!desc){document.getElementById('f-desc').focus();return;}
+  const t={date:document.getElementById('f-date').value?isoToDDMM(document.getElementById('f-date').value):'',description:desc,category:document.getElementById('f-cat').value,pay_method:document.getElementById('f-pay').value,income:parseFloat(document.getElementById('f-income').value)||0,expense:parseFloat(document.getElementById('f-expense').value)||0,paid:document.getElementById('f-paid').checked};
   if(!data[currentMonth])data[currentMonth]=[];
-  if(editingIdx!==null){data[currentMonth][editingIdx]=t;toast('Transaction updated ✔');}
-  else{data[currentMonth].push(t);toast('Transaction added ✔');}
-  saveLocal(); document.getElementById('modalOverlay').classList.remove('open');
-  renderSummary(); renderTable(); buildTabs();
+  if(editingIdx!==null){data[currentMonth][editingIdx]=t;toast('Transaction updated ✔');}else{data[currentMonth].push(t);toast('Transaction added ✔');}
+  saveLocal();document.getElementById('modalOverlay').classList.remove('open');renderSummary();renderTable();buildTabs();
 }
 
-// ─── DELETE ───────────────────────────────────────────────────────────────────
+// ── DELETE / PAID ─────────────────────────────────────────────────────────────
 function confirmDelete(){if(selectedIdx===null){toast('Select a row first');return;}const t=(data[currentMonth]||[])[selectedIdx];document.getElementById('confirmMsg').textContent=`Delete "${t.description}"?`;document.getElementById('confirmOverlay').classList.add('open');}
 function closeConfirm(){document.getElementById('confirmOverlay').classList.remove('open');}
 function doDelete(){if(selectedIdx===null)return;data[currentMonth].splice(selectedIdx,1);selectedIdx=null;saveLocal();closeConfirm();renderSummary();renderTable();buildTabs();toast('Deleted');}
 function togglePaid(){if(selectedIdx===null){toast('Select a row first');return;}const t=data[currentMonth][selectedIdx];t.paid=!t.paid;saveLocal();renderSummary();renderTable();toast(t.paid?'✔ Marked as paid':'✖ Marked as unpaid');}
 
-// ─── COPY LAST MONTH ─────────────────────────────────────────────────────────
-function copyMonthTemplate(){
-  const idx=MONTHS.findIndex(m=>m.id===currentMonth); if(idx<=0){toast('No previous month to copy');return;}
-  const prevId=MONTHS[idx-1].id; const prev=data[prevId]||[];
-  if(prev.length===0){toast('Previous month is empty');return;}
-  if((data[currentMonth]||[]).length>0){if(!confirm('Month has data. Add previous month\'s recurring items anyway?'))return;}
-  const recurring=prev.filter(t=>t.category!=='Spent'&&t.category!==''||t.income>0);
-  if(!data[currentMonth])data[currentMonth]=[];
-  recurring.forEach(t=>data[currentMonth].push({...t,paid:false}));
-  saveLocal();renderSummary();renderTable();buildTabs();toast(`Copied ${recurring.length} recurring items ✔`);
-}
+// ── COPY LAST MONTH ───────────────────────────────────────────────────────────
+function copyMonthTemplate(){const idx=MONTHS.findIndex(m=>m.id===currentMonth);if(idx<=0){toast('No previous month to copy');return;}const prevId=MONTHS[idx-1].id;const prev=data[prevId]||[];if(prev.length===0){toast('Previous month is empty');return;}if((data[currentMonth]||[]).length>0){if(!confirm('Month has data. Add previous month\'s recurring items anyway?'))return;}const recurring=prev.filter(t=>t.category!=='Spent'&&t.category!==''||t.income>0);if(!data[currentMonth])data[currentMonth]=[];recurring.forEach(t=>data[currentMonth].push({...t,paid:false}));saveLocal();renderSummary();renderTable();buildTabs();toast(`Copied ${recurring.length} recurring items ✔`);}
 
-// ─── DEBT MANAGEMENT ─────────────────────────────────────────────────────────
-function openDebtModal(){
-  const sel=document.getElementById('d-startmonth'); sel.innerHTML='';
-  MONTHS.forEach((m,i)=>{const o=document.createElement('option');o.value=i;o.textContent=m.label+' '+m.year;if(m.id===currentMonth)o.selected=true;sel.appendChild(o);});
-  renderDebtList(); document.getElementById('debtModalOverlay').classList.add('open');
-}
+// ── DEBT MANAGEMENT ───────────────────────────────────────────────────────────
+function openDebtModal(){const sel=document.getElementById('d-startmonth');sel.innerHTML='';MONTHS.forEach((m,i)=>{const o=document.createElement('option');o.value=i;o.textContent=m.label+' '+m.year;if(m.id===currentMonth)o.selected=true;sel.appendChild(o);});renderDebtList();document.getElementById('debtModalOverlay').classList.add('open');}
 function closeDebtModal(e){if(e&&e.target!==document.getElementById('debtModalOverlay'))return;document.getElementById('debtModalOverlay').classList.remove('open');}
 function renderDebtList(){
-  const debts=data._debts||[]; const container=document.getElementById('debtList');
+  const debts=data._debts||[];const container=document.getElementById('debtList');
   if(debts.length===0){container.innerHTML='<div class="debt-no-items">No debts tracked yet — add one below</div>';return;}
   const mIdx=MONTHS.findIndex(m=>m.id===currentMonth);
   container.innerHTML=debts.map(debt=>{
     const n=Math.max(0,mIdx-debt.startMonthIdx);
-    const paid=Math.min(n*debt.monthly,debt.total); const rem=Math.max(0,debt.total-paid);
-    const pct=Math.round((paid/debt.total)*100); const mLeft=rem>0?Math.ceil(rem/debt.monthly):0;
-    const sl=MONTHS[debt.startMonthIdx]; const startLbl=sl?sl.label+' '+sl.year:'—';
+    const paidAmt=Math.min(n*debt.monthly,debt.total);const rem=Math.max(0,debt.total-paidAmt);
+    const pct=Math.round((paidAmt/debt.total)*100);const mLeft=rem>0?Math.ceil(rem/debt.monthly):0;
+    const sl=MONTHS[debt.startMonthIdx];const startLbl=sl?sl.label+' '+sl.year:'—';
     const bc=pct<40?'#e74c3c':pct<75?'#e67e22':'#1a8f4e';
     return `<div class="debt-item">
       <div class="debt-item-info">
@@ -820,58 +690,54 @@ function renderDebtList(){
     </div>`;
   }).join('');
 }
-function saveDebt(){
-  const name=document.getElementById('d-name').value.trim();
-  const total=parseFloat(document.getElementById('d-total').value)||0;
-  const monthly=parseFloat(document.getElementById('d-monthly').value)||0;
-  const startMonthIdx=parseInt(document.getElementById('d-startmonth').value);
-  if(!name){document.getElementById('d-name').focus();return;}
-  if(total<=0){toast('Enter total owed');return;}
-  if(monthly<=0){toast('Enter monthly payment');return;}
-  if(monthly>total){toast('Monthly payment cannot exceed total debt');return;}
-  if(!data._debts)data._debts=[];
-  data._debts.push({id:genId(),name,total,monthly,startMonthIdx});
-  saveLocal();
-  document.getElementById('d-name').value=''; document.getElementById('d-total').value=''; document.getElementById('d-monthly').value='';
-  renderDebtList(); renderSummary(); renderTable();
-  toast(`💳 "${name}" added — auto payments calculated`);
-}
+function saveDebt(){const name=document.getElementById('d-name').value.trim();const total=parseFloat(document.getElementById('d-total').value)||0;const monthly=parseFloat(document.getElementById('d-monthly').value)||0;const startMonthIdx=parseInt(document.getElementById('d-startmonth').value);if(!name){document.getElementById('d-name').focus();return;}if(total<=0){toast('Enter total owed');return;}if(monthly<=0){toast('Enter monthly payment');return;}if(monthly>total){toast('Monthly payment cannot exceed total debt');return;}if(!data._debts)data._debts=[];data._debts.push({id:genId(),name,total,monthly,startMonthIdx});saveLocal();document.getElementById('d-name').value='';document.getElementById('d-total').value='';document.getElementById('d-monthly').value='';renderDebtList();renderSummary();renderTable();toast(`💳 "${name}" added — auto payments calculated`);}
 function deleteDebt(id){if(!confirm('Remove this debt?'))return;data._debts=(data._debts||[]).filter(d=>d.id!==id);saveLocal();renderDebtList();renderSummary();renderTable();toast('Debt removed');}
 
-// ─── SAVINGS ─────────────────────────────────────────────────────────────────
-function openAddSaving(){
-  document.getElementById('s-desc').value=''; document.getElementById('s-date').value=new Date().toISOString().slice(0,10);
-  document.getElementById('s-type').value='deposit'; document.getElementById('s-amount').value='';
+// ── SAVINGS (with confirm + edit) ─────────────────────────────────────────────
+function openAddSaving(editIdx){
+  editingSavingIdx=editIdx!=null?editIdx:null;
+  const isEdit=editingSavingIdx!==null;
+  document.getElementById('savingModalTitle').textContent=isEdit?'✏️ Edit Saving':'🏦 Savings Entry';
+  if(isEdit){
+    const s=(data._savings||[])[editingSavingIdx];
+    document.getElementById('s-desc').value=s.description;
+    document.getElementById('s-date').value=ddmmToISO(s.date);
+    document.getElementById('s-type').value=s.type;
+    document.getElementById('s-amount').value=s.amount;
+  } else {
+    document.getElementById('s-desc').value='';document.getElementById('s-date').value=new Date().toISOString().slice(0,10);document.getElementById('s-type').value='deposit';document.getElementById('s-amount').value='';
+  }
   document.getElementById('savingModalOverlay').classList.add('open');
   setTimeout(()=>document.getElementById('s-desc').focus(),300);
 }
-function closeSavingModal(e){if(e&&e.target!==document.getElementById('savingModalOverlay'))return;document.getElementById('savingModalOverlay').classList.remove('open');}
+function closeSavingModal(e){if(e&&e.target!==document.getElementById('savingModalOverlay'))return;document.getElementById('savingModalOverlay').classList.remove('open');editingSavingIdx=null;}
 function saveSaving(){
-  const desc=document.getElementById('s-desc').value.trim();
-  const amount=parseFloat(document.getElementById('s-amount').value)||0;
-  const type=document.getElementById('s-type').value;
-  const dateISO=document.getElementById('s-date').value;
-  if(!desc){document.getElementById('s-desc').focus();return;}
-  if(amount<=0){toast('Enter an amount');return;}
+  const desc=document.getElementById('s-desc').value.trim();const amount=parseFloat(document.getElementById('s-amount').value)||0;const type=document.getElementById('s-type').value;const dateISO=document.getElementById('s-date').value;
+  if(!desc){document.getElementById('s-desc').focus();return;}if(amount<=0){toast('Enter an amount');return;}
   if(!data._savings)data._savings=[];
-  data._savings.push({id:genId(),date:dateISO?isoToDDMM(dateISO):'',description:desc,type,amount});
+  if(editingSavingIdx!==null){
+    const existing=data._savings[editingSavingIdx];
+    data._savings[editingSavingIdx]={...existing,date:dateISO?isoToDDMM(dateISO):'',description:desc,type,amount};
+    toast('Saving updated ✔');
+  } else {
+    data._savings.push({id:genId(),date:dateISO?isoToDDMM(dateISO):'',description:desc,type,amount,confirmed:false});
+    toast(type==='deposit'?'🏦 Saving added ✔':'💸 Withdrawal logged ✔');
+  }
   data._savings.sort((a,b)=>{const da=a.date?ddmmToISO(a.date):'0';const db=b.date?ddmmToISO(b.date):'0';return da.localeCompare(db);});
-  saveLocal(); document.getElementById('savingModalOverlay').classList.remove('open');
-  renderSavings(); renderSummary();
-  toast(type==='deposit'?'🏦 Saving added ✔':'💸 Withdrawal logged ✔');
+  editingSavingIdx=null;saveLocal();document.getElementById('savingModalOverlay').classList.remove('open');renderSavings();renderSummary();
 }
-function deleteSelectedSaving(){
-  if(selectedSavingIdx===null){toast('Select a savings row first');return;}
-  const s=(data._savings||[])[selectedSavingIdx]; if(!s)return;
-  if(!confirm(`Delete "${s.description}"?`))return;
-  data._savings.splice(selectedSavingIdx,1); selectedSavingIdx=null;
-  saveLocal(); renderSavings(); renderSummary(); toast('Savings entry deleted');
+function confirmSaving(i){
+  if(!data._savings||!data._savings[i])return;
+  data._savings[i].confirmed=!data._savings[i].confirmed;
+  saveLocal();renderSavings();
+  toast(data._savings[i].confirmed?'🏦 Saving confirmed ✔':'Saving unconfirmed');
 }
+function deleteSelectedSaving(){if(selectedSavingIdx===null){toast('Select a savings row first');return;}const s=(data._savings||[])[selectedSavingIdx];if(!s)return;if(!confirm(`Delete "${s.description}"?`))return;data._savings.splice(selectedSavingIdx,1);selectedSavingIdx=null;saveLocal();renderSavings();renderSummary();toast('Savings entry deleted');}
 function selectSavingRow(i){selectedSavingIdx=(selectedSavingIdx===i)?null:i;renderSavings();}
 function renderSavings(){
-  const savings=data._savings||[]; const wrap=document.getElementById('savingsTableWrap'); const badge=document.getElementById('savingsTotalBadge');
-  let running=0; savings.forEach(s=>{running+=s.type==='deposit'?s.amount:-s.amount;});
-  badge.textContent='£'+running.toFixed(2); badge.classList.toggle('negative',running<0);
+  const savings=data._savings||[];const wrap=document.getElementById('savingsTableWrap');const badge=document.getElementById('savingsTotalBadge');
+  let running=0;savings.forEach(s=>{running+=s.type==='deposit'?s.amount:-s.amount;});
+  badge.textContent='£'+running.toFixed(2);badge.classList.toggle('negative',running<0);
   if(savings.length===0){wrap.innerHTML='<div class="empty" style="padding:28px 20px"><div class="icon">🏦</div><p>No savings entries yet</p></div>';return;}
   let runT=0,rows='';
   savings.forEach((s,i)=>{
@@ -879,50 +745,42 @@ function renderSavings(){
     const isIn=s.type==='deposit';
     const inV=isIn?`<span class="income-val">£${s.amount.toFixed(2)}</span>`:'<span style="color:var(--muted)">—</span>';
     const ouV=!isIn?`<span class="expense-val">£${s.amount.toFixed(2)}</span>`:'<span style="color:var(--muted)">—</span>';
-    const tc=runT>=0?'bal-pos':'bal-neg'; const sel=selectedSavingIdx===i?' selected':'';
-    rows+=`<tr class="${sel}" onclick="selectSavingRow(${i})" style="cursor:pointer">
+    const tc=runT>=0?'bal-pos':'bal-neg';
+    const isSel=selectedSavingIdx===i;
+    const isConf=!!s.confirmed;
+    const confirmBtn=isConf
+      ?`<button class="row-action-btn rab-confirmed" onclick="event.stopPropagation();confirmSaving(${i})">✔ Confirmed</button>`
+      :`<button class="row-action-btn rab-confirm" onclick="event.stopPropagation();confirmSaving(${i})">✔ Confirm</button>`;
+    const editBtn=`<button class="row-action-btn rab-edit" onclick="event.stopPropagation();openAddSaving(${i})">✏</button>`;
+    const rowCls=(isConf?'saving-confirmed':'')+(isSel?' selected':'');
+    rows+=`<tr class="${rowCls}" onclick="selectSavingRow(${i})" style="cursor:pointer">
+      <td class="cb-cell"><div class="cb${isSel?' checked':''}">${isSel?'✔':''}</div></td>
       <td class="hide-mobile" style="color:var(--muted);font-size:.8rem">${s.date||''}</td>
-      <td><strong>${escHtml(s.description)}</strong></td>
+      <td><strong>${escHtml(s.description)}</strong><br><span style="white-space:nowrap">${confirmBtn}${editBtn}</span></td>
       <td class="num">${inV}</td><td class="num">${ouV}</td>
       <td class="num ${tc}">£${runT.toFixed(2)}</td>
     </tr>`;
   });
-  wrap.innerHTML=`<table><thead><tr><th class="hide-mobile">Date</th><th>Description</th><th class="num">In £</th><th class="num">Out £</th><th class="num">Running Total £</th></tr></thead><tbody>${rows}</tbody></table>`;
+  wrap.innerHTML=`<table><thead><tr>
+    <th style="width:42px"></th>
+    <th class="hide-mobile">Date</th><th>Description</th>
+    <th class="num">In £</th><th class="num">Out £</th>
+    <th class="num">Running Total £</th>
+  </tr></thead><tbody>${rows}</tbody></table>`;
 }
 
-// ─── EXPORT / IMPORT ─────────────────────────────────────────────────────────
-function exportJSON(){const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='TomFinance_Backup_'+new Date().toISOString().slice(0,10)+'.json';a.click();toast('Backup file downloaded ✔');}
+// ── EXPORT / IMPORT ───────────────────────────────────────────────────────────
+function exportJSON(){const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='TomFinance_Backup_'+new Date().toISOString().slice(0,10)+'.json';a.click();toast('Backup downloaded ✔');}
 function importJSON(){document.getElementById('fileInput').click();}
-function handleFileLoad(e){
-  const file=e.target.files[0]; if(!file)return;
-  const reader=new FileReader();
-  reader.onload=ev=>{
-    try{
-      data=JSON.parse(ev.target.result);
-      if(!data._debts)data._debts=[];if(!data._savings)data._savings=[];
-      saveLocal(); buildTabs(); showMonth(currentMonth); renderSavings();
-      toast('Restored ✔');
-    }catch(err){alert('Could not read file: '+err.message);}
-  };
-  reader.readAsText(file); e.target.value='';
-}
-function exportCSV(){
-  const m=MONTHS.find(m=>m.id===currentMonth); const txns=data[currentMonth]||[];
-  const rows=[['Date','Description','Category','Pay Method','Income','Expense','Paid']];
-  txns.forEach(t=>rows.push([t.date,t.description,t.category,t.pay_method,t.income||'',t.expense||'',t.paid?'YES':'NO']));
-  const csv=rows.map(r=>r.map(c=>'"'+(String(c).replace(/"/g,'""'))+'"').join(',')).join('\n');
-  const blob=new Blob([csv],{type:'text/csv'});const a=document.createElement('a');
-  a.href=URL.createObjectURL(blob);a.download='Finance_'+(m?m.label+'_'+m.year:'month')+'.csv';a.click();toast('Exported CSV ✔');
-}
+function handleFileLoad(e){const file=e.target.files[0];if(!file)return;const reader=new FileReader();reader.onload=ev=>{try{data=JSON.parse(ev.target.result);migrate();saveLocal();buildTabs();showMonth(currentMonth);renderSavings();toast('Restored ✔');}catch(err){alert('Could not read file: '+err.message);}};reader.readAsText(file);e.target.value='';}
+function exportCSV(){const m=MONTHS.find(m=>m.id===currentMonth);const txns=data[currentMonth]||[];const rows=[['Date','Description','Category','Pay Method','Income','Expense','Paid']];txns.forEach(t=>rows.push([t.date,t.description,t.category,t.pay_method,t.income||'',t.expense||'',t.paid?'YES':'NO']));const csv=rows.map(r=>r.map(c=>'"'+(String(c).replace(/"/g,'""'))+'"').join(',')).join('\n');const blob=new Blob([csv],{type:'text/csv'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='Finance_'+(m?m.label+'_'+m.year:'month')+'.csv';a.click();toast('Exported CSV ✔');}
 
-// ─── KEYBOARD ────────────────────────────────────────────────────────────────
+// ── KEYBOARD ──────────────────────────────────────────────────────────────────
 document.addEventListener('keydown',e=>{
   if(e.target.tagName==='INPUT'||e.target.tagName==='SELECT')return;
-  if(e.key==='a'||e.key==='A')openAdd();
-  if(e.key==='e'||e.key==='E')openEdit();
-  if(e.key==='Delete')confirmDelete();
-  if(e.key===' '){e.preventDefault();togglePaid();}
-  if(e.key==='Escape'){closeModal();closeConfirm();closeDebtModal();closeSavingModal();}
+  if(e.key==='a'||e.key==='A')openAdd();if(e.key==='e'||e.key==='E')openEdit();
+  if(e.key==='Delete')confirmDelete();if(e.key===' '){e.preventDefault();togglePaid();}
+  if(e.key==='Escape'){closeModal();closeConfirm();closeDebtModal();closeSavingModal();closeDebtPayEdit();}
   if(e.key==='ArrowRight'){const i=MONTHS.findIndex(m=>m.id===currentMonth);if(i<MONTHS.length-1)showMonth(MONTHS[i+1].id);}
   if(e.key==='ArrowLeft'){const i=MONTHS.findIndex(m=>m.id===currentMonth);if(i>0)showMonth(MONTHS[i-1].id);}
 });
