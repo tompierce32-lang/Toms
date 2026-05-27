@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
+<!-- saved from url=(0077)file:///C:/Users/TomPierce/Downloads/Tom_s_Finance_Tracker___3_Year_Plan.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 <meta name="theme-color" content="#0a1628">
 <meta name="mobile-web-app-capable" content="yes">
@@ -244,7 +244,7 @@ select option{background:var(--surface2)}
 <div class="header">
   <div class="header-title"><span>💷</span> Tom's Finance</div>
   <div class="header-actions">
-    <span class="save-status ss-loading" id="saveStatus">↺ Loading</span>
+    <span class="save-status ss-saved" id="saveStatus">✔ Cloud</span>
     <button class="btn btn-ghost btn-sm" onclick="exportCSV()">📤 <span class="btn-text">Export</span></button>
     <button class="btn btn-ghost btn-sm" onclick="exportJSON()">💾 <span class="btn-text">Backup</span></button>
     <button class="btn btn-ghost btn-sm" onclick="importJSON()">📂 <span class="btn-text">Restore</span></button>
@@ -252,23 +252,31 @@ select option{background:var(--surface2)}
   </div>
 </div>
 
-<div class="months-nav"><div class="months-tabs" id="monthsTabs"></div></div>
+<div class="months-nav"><div class="months-tabs" id="monthsTabs"><span class="year-sep">2026</span><button class="month-tab has-data" title="May-Jun 2026" id="tab_may_jun_26">May-Jun</button><button class="month-tab has-data" title="Jun-Jul 2026" id="tab_jun_jul_26">Jun-Jul</button><button class="month-tab has-data active" title="Jul-Aug 2026" id="tab_jul_aug_26">Jul-Aug</button><button class="month-tab has-data" title="Aug-Sep 2026" id="tab_aug_sep_26">Aug-Sep</button><button class="month-tab has-data" title="Sep-Oct 2026" id="tab_sep_oct_26">Sep-Oct</button><button class="month-tab has-data" title="Oct-Nov 2026" id="tab_oct_nov_26">Oct-Nov</button><button class="month-tab has-data" title="Nov-Dec 2026" id="tab_nov_dec_26">Nov-Dec</button><span class="year-sep">2026/27</span><button class="month-tab has-data" title="Dec-Jan 2026/27" id="tab_dec_jan_27">Dec-Jan</button><span class="year-sep">2027</span><button class="month-tab has-data" title="Jan-Feb 2027" id="tab_jan_feb_27">Jan-Feb</button><button class="month-tab has-data" title="Feb-Mar 2027" id="tab_feb_mar_27">Feb-Mar</button><button class="month-tab has-data" title="Mar-Apr 2027" id="tab_mar_apr_27">Mar-Apr</button><button class="month-tab has-data" title="Apr-May 2027" id="tab_apr_may_27">Apr-May</button><button class="month-tab has-data" title="May-Jun 2027" id="tab_may_jun_27">May-Jun</button><button class="month-tab has-data" title="Jun-Jul 2027" id="tab_jun_jul_27">Jun-Jul</button><button class="month-tab has-data" title="Jul-Aug 2027" id="tab_jul_aug_27">Jul-Aug</button><button class="month-tab has-data" title="Aug-Sep 2027" id="tab_aug_sep_27">Aug-Sep</button><button class="month-tab has-data" title="Sep-Oct 2027" id="tab_sep_oct_27">Sep-Oct</button><button class="month-tab has-data" title="Oct-Nov 2027" id="tab_oct_nov_27">Oct-Nov</button><button class="month-tab has-data" title="Nov-Dec 2027" id="tab_nov_dec_27">Nov-Dec</button><span class="year-sep">2027/28</span><button class="month-tab has-data" title="Dec-Jan 2027/28" id="tab_dec_jan_28">Dec-Jan</button><span class="year-sep">2028</span><button class="month-tab has-data" title="Jan-Feb 2028" id="tab_jan_feb_28">Jan-Feb</button><button class="month-tab has-data" title="Feb-Mar 2028" id="tab_feb_mar_28">Feb-Mar</button><button class="month-tab has-data" title="Mar-Apr 2028" id="tab_mar_apr_28">Mar-Apr</button><button class="month-tab has-data" title="Apr-May 2028" id="tab_apr_may_28">Apr-May</button><button class="month-tab has-data" title="May-Jun 2028" id="tab_may_jun_28">May-Jun</button><button class="month-tab has-data" title="Jun-Jul 2028" id="tab_jun_jul_28">Jun-Jul</button><button class="month-tab has-data" title="Jul-Aug 2028" id="tab_jul_aug_28">Jul-Aug</button><button class="month-tab has-data" title="Aug-Sep 2028" id="tab_aug_sep_28">Aug-Sep</button><button class="month-tab has-data" title="Sep-Oct 2028" id="tab_sep_oct_28">Sep-Oct</button><button class="month-tab has-data" title="Oct-Nov 2028" id="tab_oct_nov_28">Oct-Nov</button><button class="month-tab has-data" title="Nov-Dec 2028" id="tab_nov_dec_28">Nov-Dec</button><span class="year-sep">2028/29</span><button class="month-tab has-data" title="Dec-Jan 2028/29" id="tab_dec_jan_29">Dec-Jan</button><span class="year-sep">2029</span><button class="month-tab has-data" title="Jan-Feb 2029" id="tab_jan_feb_29">Jan-Feb</button><button class="month-tab has-data" title="Feb-Mar 2029" id="tab_feb_mar_29">Feb-Mar</button><button class="month-tab has-data" title="Mar-Apr 2029" id="tab_mar_apr_29">Mar-Apr</button><button class="month-tab has-data" title="Apr-May 2029" id="tab_apr_may_29">Apr-May</button></div></div>
 
 <div class="main">
-  <div class="year-progress" id="yearProgress" style="display:none">
-    <span class="progress-label" id="progressLabel"></span>
-    <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
-    <span class="progress-label" id="progressPct"></span>
+  <div class="year-progress" id="yearProgress" style="display: flex;">
+    <span class="progress-label" id="progressLabel">Month 3 of 36</span>
+    <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width: 6%;"></div></div>
+    <span class="progress-label" id="progressPct">6% through plan</span>
   </div>
-  <div class="summary-grid" id="summaryGrid"></div>
+  <div class="summary-grid" id="summaryGrid">
+    <div class="card"><div class="card-label">💰 Income</div><div class="card-value green">£2200.00</div></div>
+    <div class="card"><div class="card-label">💸 Expenses</div><div class="card-value red">£855.10</div></div>
+    <div class="card"><div class="card-label">💳 Debt Pmts</div><div class="card-value red">£200.08</div></div>
+    <div class="card"><div class="card-label">⚖ Balance</div><div class="card-value green">£1144.82</div></div>
+    <div class="card"><div class="card-label">✔ Paid</div><div class="card-value teal">£0.00</div></div>
+    <div class="card"><div class="card-label">⏳ Outstanding</div><div class="card-value orange">£855.10</div></div>
+    <div class="card"><div class="card-label">💳 Total Debt</div><div class="card-value red">£2247.59</div></div>
+    <div class="card"><div class="card-label">🏦 Savings</div><div class="card-value teal">£200.00</div></div></div>
   <div class="view-tabs">
-    <button class="view-tab active" id="vt-transactions" onclick="showView('transactions')">📊 Transactions</button>
-    <button class="view-tab" id="vt-savings" onclick="showView('savings')">🏦 Savings</button>
-    <button class="view-tab" id="vt-goals" onclick="showView('goals')">🎯 Goals</button>
+    <button class="view-tab" id="vt-transactions" onclick="showView(&#39;transactions&#39;)">📊 Transactions</button>
+    <button class="view-tab active" id="vt-savings" onclick="showView(&#39;savings&#39;)">🏦 Savings</button>
+    <button class="view-tab" id="vt-goals" onclick="showView(&#39;goals&#39;)">🎯 Goals</button>
   </div>
 
   <!-- Transactions Panel -->
-  <div id="view-transactions">
+  <div id="view-transactions" style="display: none;">
   <div class="toolbar">
     <button class="btn btn-success btn-sm" onclick="openAdd()">➕ <span class="btn-text">Add</span></button>
     <button class="btn btn-sm" style="background:#1a6fa8;color:#fff" onclick="openEdit()">✏️ <span class="btn-text">Edit</span></button>
@@ -277,11 +285,129 @@ select option{background:var(--surface2)}
     <button class="btn btn-ghost btn-sm" onclick="copyMonthTemplate()">📋 <span class="btn-text">Copy Last</span></button>
     <button class="btn btn-sm" onclick="openDebtModal()" style="background:#9a1a0e;color:#fff">💳 <span class="btn-text">Debts</span></button>
   </div>
-    <div class="table-wrap" id="tableWrap"></div>
+    <div class="table-wrap" id="tableWrap"><table><thead><tr>
+    <th style="width:42px"></th><th class="hide-mobile">Date</th><th>Description</th>
+    <th class="hide-mobile">Category</th><th class="hide-mobile">Method</th>
+    <th class="num">In £</th><th class="num">Out £</th>
+    <th style="text-align:center">Paid</th><th class="num">Balance £</th>
+  </tr></thead><tbody><tr class="row-housing unpaid-row" onclick="selectRow(0)" ondblclick="openEdit()">
+      <td class="cb-cell"><div class="cb"></div></td>
+      <td class="hide-mobile" style="color:var(--muted);font-size:.8rem">31/07/2026</td>
+      <td><strong>Rent Bills</strong><span class="recur-badge">RECUR</span></td>
+      <td class="hide-mobile"><span class="cat-badge" style="background:#5dade222;color:#5dade2">Housing</span></td>
+      <td class="hide-mobile" style="color:var(--muted);font-size:.82rem">Basic</td>
+      <td class="num"><span style="color:var(--muted)">—</span></td><td class="num"><span class="expense-val">£446.00</span></td>
+      <td style="text-align:center"><span class="paid-no">✖</span></td>
+      <td class="num bal-neg">£-446.00</td>
+    </tr><tr class="row-car unpaid-row" onclick="selectRow(1)" ondblclick="openEdit()">
+      <td class="cb-cell"><div class="cb"></div></td>
+      <td class="hide-mobile" style="color:var(--muted);font-size:.8rem">29/07/2026</td>
+      <td><strong>PO Insurance</strong><span class="recur-badge">RECUR</span></td>
+      <td class="hide-mobile"><span class="cat-badge" style="background:#af7ac522;color:#af7ac5">Car insuance</span></td>
+      <td class="hide-mobile" style="color:var(--muted);font-size:.82rem"></td>
+      <td class="num"><span style="color:var(--muted)">—</span></td><td class="num"><span class="expense-val">£45.17</span></td>
+      <td style="text-align:center"><span class="paid-no">✖</span></td>
+      <td class="num bal-neg">£-491.17</td>
+    </tr><tr class="row-car unpaid-row" onclick="selectRow(2)" ondblclick="openEdit()">
+      <td class="cb-cell"><div class="cb"></div></td>
+      <td class="hide-mobile" style="color:var(--muted);font-size:.8rem">26/07/2026</td>
+      <td><strong>DVLA</strong><span class="recur-badge">RECUR</span></td>
+      <td class="hide-mobile"><span class="cat-badge" style="background:#af7ac522;color:#af7ac5">Car Tax</span></td>
+      <td class="hide-mobile" style="color:var(--muted);font-size:.82rem">Basic</td>
+      <td class="num"><span style="color:var(--muted)">—</span></td><td class="num"><span class="expense-val">£14.43</span></td>
+      <td style="text-align:center"><span class="paid-no">✖</span></td>
+      <td class="num bal-neg">£-505.60</td>
+    </tr><tr class=" unpaid-row" onclick="selectRow(3)" ondblclick="openEdit()">
+      <td class="cb-cell"><div class="cb"></div></td>
+      <td class="hide-mobile" style="color:var(--muted);font-size:.8rem">06/08/2026</td>
+      <td><strong>ID mobile</strong><span class="recur-badge">RECUR</span></td>
+      <td class="hide-mobile"><span class="cat-badge" style="background:#6c708622;color:#6c7086">—</span></td>
+      <td class="hide-mobile" style="color:var(--muted);font-size:.82rem">Current</td>
+      <td class="num"><span style="color:var(--muted)">—</span></td><td class="num"><span class="expense-val">£37.00</span></td>
+      <td style="text-align:center"><span class="paid-no">✖</span></td>
+      <td class="num bal-neg">£-542.60</td>
+    </tr><tr class="row-income" onclick="selectRow(4)" ondblclick="openEdit()">
+      <td class="cb-cell"><div class="cb"></div></td>
+      <td class="hide-mobile" style="color:var(--muted);font-size:.8rem">29/06/2026</td>
+      <td><strong>LCC</strong></td>
+      <td class="hide-mobile"><span class="cat-badge" style="background:#2ecc7122;color:#2ecc71">Income</span></td>
+      <td class="hide-mobile" style="color:var(--muted);font-size:.82rem">Basic</td>
+      <td class="num"><span class="income-val">£2200.00</span></td><td class="num"><span style="color:var(--muted)">—</span></td>
+      <td style="text-align:center"><span class="paid-no">✖</span></td>
+      <td class="num bal-pos">£1657.40</td>
+    </tr><tr class=" unpaid-row" onclick="selectRow(5)" ondblclick="openEdit()">
+      <td class="cb-cell"><div class="cb"></div></td>
+      <td class="hide-mobile" style="color:var(--muted);font-size:.8rem">29/07/2026</td>
+      <td><strong>Lou-187.5-50-100</strong><span class="recur-badge">RECUR</span></td>
+      <td class="hide-mobile"><span class="cat-badge" style="background:#6c708622;color:#6c7086">—</span></td>
+      <td class="hide-mobile" style="color:var(--muted);font-size:.82rem">Basic</td>
+      <td class="num"><span style="color:var(--muted)">—</span></td><td class="num"><span class="expense-val">£112.50</span></td>
+      <td style="text-align:center"><span class="paid-no">✖</span></td>
+      <td class="num bal-pos">£1544.90</td>
+    </tr><tr class=" unpaid-row" onclick="selectRow(6)" ondblclick="openEdit()">
+      <td class="cb-cell"><div class="cb"></div></td>
+      <td class="hide-mobile" style="color:var(--muted);font-size:.8rem">28/07/2026</td>
+      <td><strong>Joint Food (Monzo)</strong><span class="recur-badge">RECUR</span></td>
+      <td class="hide-mobile"><span class="cat-badge" style="background:#6c708622;color:#6c7086">—</span></td>
+      <td class="hide-mobile" style="color:var(--muted);font-size:.82rem">Current</td>
+      <td class="num"><span style="color:var(--muted)">—</span></td><td class="num"><span class="expense-val">£200.00</span></td>
+      <td style="text-align:center"><span class="paid-no">✖</span></td>
+      <td class="num bal-pos">£1344.90</td>
+    </tr><tr class="debt-auto-row" onclick="selectDebtRow(&#39;mpn938yrdv45_2&#39;)">
+      <td class="cb-cell"><div class="cb"></div></td>
+      <td class="hide-mobile" style="color:var(--muted);font-size:.75rem">Auto</td>
+      <td><strong>📉 Salad money</strong><span class="auto-badge">AUTO</span><span class="debt-row-hint">Tap to select · ✏️ Edit or ✔ Toggle Paid in toolbar</span></td>
+      <td class="hide-mobile"><span class="cat-badge" style="background:#e74c3c22;color:#e74c3c">Debt</span></td>
+      <td class="hide-mobile" style="color:var(--muted);font-size:.82rem">Auto</td>
+      <td class="num"><span style="color:var(--muted)">—</span></td>
+      <td class="num"><span class="expense-val">£86.81</span></td>
+      <td style="text-align:center"><small style="color:#b02a1a;font-weight:600">£597.63 left</small></td>
+      <td class="num bal-pos">£1258.09</td>
+    </tr><tr class="debt-auto-row" onclick="selectDebtRow(&#39;mpn9r2zpae12_2&#39;)">
+      <td class="cb-cell"><div class="cb"></div></td>
+      <td class="hide-mobile" style="color:var(--muted);font-size:.75rem">Auto</td>
+      <td><strong>📉 Overdales</strong><span class="auto-badge">AUTO</span><span class="debt-row-hint">Tap to select · ✏️ Edit or ✔ Toggle Paid in toolbar</span></td>
+      <td class="hide-mobile"><span class="cat-badge" style="background:#e74c3c22;color:#e74c3c">Debt</span></td>
+      <td class="hide-mobile" style="color:var(--muted);font-size:.82rem">Auto</td>
+      <td class="num"><span style="color:var(--muted)">—</span></td>
+      <td class="num"><span class="expense-val">£66.00</span></td>
+      <td style="text-align:center"><small style="color:#b02a1a;font-weight:600">£448.00 left</small></td>
+      <td class="num bal-pos">£1192.09</td>
+    </tr><tr class="debt-auto-row" onclick="selectDebtRow(&#39;mpn9wegitnul_2&#39;)">
+      <td class="cb-cell"><div class="cb"></div></td>
+      <td class="hide-mobile" style="color:var(--muted);font-size:.75rem">Auto</td>
+      <td><strong>📉 Shop direct</strong><span class="auto-badge">AUTO</span><span class="debt-row-hint">Tap to select · ✏️ Edit or ✔ Toggle Paid in toolbar</span></td>
+      <td class="hide-mobile"><span class="cat-badge" style="background:#e74c3c22;color:#e74c3c">Debt</span></td>
+      <td class="hide-mobile" style="color:var(--muted);font-size:.82rem">Auto</td>
+      <td class="num"><span style="color:var(--muted)">—</span></td>
+      <td class="num"><span class="expense-val">£22.27</span></td>
+      <td style="text-align:center"><small style="color:#b02a1a;font-weight:600">£89.03 left</small></td>
+      <td class="num bal-pos">£1169.82</td>
+    </tr><tr class="debt-auto-row" onclick="selectDebtRow(&#39;mpna1yacjgtp_2&#39;)">
+      <td class="cb-cell"><div class="cb"></div></td>
+      <td class="hide-mobile" style="color:var(--muted);font-size:.75rem">Auto</td>
+      <td><strong>📉 Advantis Tax</strong><span class="auto-badge">AUTO</span><span class="debt-row-hint">Tap to select · ✏️ Edit or ✔ Toggle Paid in toolbar</span></td>
+      <td class="hide-mobile"><span class="cat-badge" style="background:#e74c3c22;color:#e74c3c">Debt</span></td>
+      <td class="hide-mobile" style="color:var(--muted);font-size:.82rem">Auto</td>
+      <td class="num"><span style="color:var(--muted)">—</span></td>
+      <td class="num"><span class="expense-val">£20.00</span></td>
+      <td style="text-align:center"><small style="color:#b02a1a;font-weight:600">£301.69 left</small></td>
+      <td class="num bal-pos">£1149.82</td>
+    </tr><tr class="debt-auto-row" onclick="selectDebtRow(&#39;mpnandyop7po_2&#39;)">
+      <td class="cb-cell"><div class="cb"></div></td>
+      <td class="hide-mobile" style="color:var(--muted);font-size:.75rem">Auto</td>
+      <td><strong>📉 Lantern</strong><span class="auto-badge">AUTO</span><span class="debt-row-hint">Tap to select · ✏️ Edit or ✔ Toggle Paid in toolbar</span></td>
+      <td class="hide-mobile"><span class="cat-badge" style="background:#e74c3c22;color:#e74c3c">Debt</span></td>
+      <td class="hide-mobile" style="color:var(--muted);font-size:.82rem">Auto</td>
+      <td class="num"><span style="color:var(--muted)">—</span></td>
+      <td class="num"><span class="expense-val">£5.00</span></td>
+      <td style="text-align:center"><small style="color:#b02a1a;font-weight:600">£216.00 left</small></td>
+      <td class="num bal-pos">£1144.82</td>
+    </tr></tbody></table></div>
   </div>
 
   <!-- Savings Panel -->
-  <div id="view-savings" style="display:none">
+  <div id="view-savings" style="display: block;">
     <div class="savings-section">
       <div class="savings-header">
         <div class="savings-title">
@@ -295,28 +421,24 @@ select option{background:var(--surface2)}
           <button class="btn btn-sm" onclick="deleteSelectedSaving()" style="background:rgba(180,50,30,.5);color:#fff;border:1px solid rgba(255,255,255,.2)">🗑 Delete</button>
         </div>
       </div>
-      <div class="table-wrap" style="border:none;border-radius:0" id="savingsTableWrap">
-        <div class="empty" style="padding:28px 20px"><div class="icon">🏦</div><p>No savings entries yet</p></div>
-      </div>
+      <div class="table-wrap" style="border:none;border-radius:0" id="savingsTableWrap"><div class="empty" style="padding:28px 20px"><div class="icon">🏦</div><p>No savings entries for this month</p></div></div>
     </div>
   </div>
 
   <!-- Goals Panel -->
-  <div id="view-goals" style="display:none">
+  <div id="view-goals" style="display: none;">
     <div class="goals-tab-header">
       <div>
         <div class="goals-tab-title">🎯 Savings Goals</div>
-        <div class="goals-tab-sub" id="goalsSub">Set a target and deadline — monthly plan calculated automatically</div>
+        <div class="goals-tab-sub" id="goalsSub">£200.00 total confirmed savings</div>
       </div>
       <button class="btn btn-purple btn-sm" onclick="openAddGoal()">➕ Add Goal</button>
     </div>
-    <div id="goalsTabContent">
-      <div class="goal-empty-view"><div class="icon">🎯</div><p>No savings goals yet</p><button class="btn btn-purple" onclick="openAddGoal()" style="margin-top:14px">➕ Add Your First Goal</button></div>
-    </div>
+    <div id="goalsTabContent"><div class="goal-plan-card"><div class="goal-plan-top"><div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:10px"><div style="flex:1"><div class="goal-plan-name">🎯 tooth</div><div class="goal-plan-detail">Target £1000.00 · Deadline Nov-Dec 2026 · 4 months left</div></div><div style="display:flex;gap:8px;align-items:center"><div class="goal-plan-monthly-box"><div class="goal-plan-monthly-amt">£250.00</div><div class="goal-plan-monthly-lbl">/month needed</div></div><button class="btn btn-danger btn-sm" onclick="deleteGoal(&#39;mpo5389gfof9&#39;)">🗑</button></div></div><div><div class="goal-plan-bar"><div class="goal-plan-bar-fill" style="width:0%;background:#a78bfa"></div></div><div class="goal-plan-bar-lbl"><span>£0</span><span>£0.00 (0%)</span><span>£1000.00</span></div></div></div><div class="goal-plan-sec-head"><span>📅 Monthly Payment Plan</span><span style="font-weight:400;text-transform:none;letter-spacing:0">5 months</span></div><div style="overflow-x:auto"><table class="goal-plan-table"><thead><tr><th>Month</th><th class="num">Amount</th><th style="text-align:center">Status</th></tr></thead><tbody><tr style="background:#e8f0fd;font-weight:600"><td style="padding:8px 10px;white-space:nowrap"><strong>▶ Jul-Aug 2026</strong></td><td style="padding:8px 10px;text-align:right;font-family:Consolas,monospace;font-weight:600">£200.00</td><td style="text-align:center;padding:8px 10px"><button class="rab rab-goal" onclick="confirmGoalMonth(&#39;mpo5389gfof9&#39;,&#39;jul_aug_26&#39;,200)">✔ Confirm £200.00</button></td></tr><tr style=""><td style="padding:8px 10px;white-space:nowrap">Aug-Sep 2026</td><td style="padding:8px 10px;text-align:right;font-family:Consolas,monospace;font-weight:600">£200.00</td><td style="text-align:center;padding:8px 10px"><button class="rab rab-goal" onclick="confirmGoalMonth(&#39;mpo5389gfof9&#39;,&#39;aug_sep_26&#39;,200)">✔ Confirm £200.00</button></td></tr><tr style=""><td style="padding:8px 10px;white-space:nowrap">Sep-Oct 2026</td><td style="padding:8px 10px;text-align:right;font-family:Consolas,monospace;font-weight:600">£200.00</td><td style="text-align:center;padding:8px 10px"><button class="rab rab-goal" onclick="confirmGoalMonth(&#39;mpo5389gfof9&#39;,&#39;sep_oct_26&#39;,200)">✔ Confirm £200.00</button></td></tr><tr style=""><td style="padding:8px 10px;white-space:nowrap">Oct-Nov 2026</td><td style="padding:8px 10px;text-align:right;font-family:Consolas,monospace;font-weight:600">£200.00</td><td style="text-align:center;padding:8px 10px"><button class="rab rab-goal" onclick="confirmGoalMonth(&#39;mpo5389gfof9&#39;,&#39;oct_nov_26&#39;,200)">✔ Confirm £200.00</button></td></tr><tr style=""><td style="padding:8px 10px;white-space:nowrap">Nov-Dec 2026</td><td style="padding:8px 10px;text-align:right;font-family:Consolas,monospace;font-weight:600">£200.00</td><td style="text-align:center;padding:8px 10px"><button class="rab rab-goal" onclick="confirmGoalMonth(&#39;mpo5389gfof9&#39;,&#39;nov_dec_26&#39;,200)">✔ Confirm £200.00</button></td></tr></tbody></table></div></div></div>
   </div>
 </div>
 
-<button class="fab" id="mainFab" onclick="fabAction()">+</button>
+<button class="fab" id="mainFab" onclick="fabAction()" style="font-size: 1.3rem;">🏦</button>
 
 <!-- Add/Edit Transaction Modal -->
 <div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
@@ -450,7 +572,7 @@ select option{background:var(--surface2)}
       </select>
     </div>
     <div class="form-group full"><label>Amount £</label><input id="s-amount" type="number" step="0.01" min="0" placeholder="0.00"></div>
-    <div class="form-group full"><label>Month</label><select id="s-month"></select></div>
+    <div class="form-group full"><label>Month</label><select id="s-month"><option value="may_jun_26">May-Jun 2026</option><option value="jun_jul_26">Jun-Jul 2026</option><option value="jul_aug_26">Jul-Aug 2026</option><option value="aug_sep_26">Aug-Sep 2026</option><option value="sep_oct_26">Sep-Oct 2026</option><option value="oct_nov_26">Oct-Nov 2026</option><option value="nov_dec_26">Nov-Dec 2026</option><option value="dec_jan_27">Dec-Jan 2026/27</option><option value="jan_feb_27">Jan-Feb 2027</option><option value="feb_mar_27">Feb-Mar 2027</option><option value="mar_apr_27">Mar-Apr 2027</option><option value="apr_may_27">Apr-May 2027</option><option value="may_jun_27">May-Jun 2027</option><option value="jun_jul_27">Jun-Jul 2027</option><option value="jul_aug_27">Jul-Aug 2027</option><option value="aug_sep_27">Aug-Sep 2027</option><option value="sep_oct_27">Sep-Oct 2027</option><option value="oct_nov_27">Oct-Nov 2027</option><option value="nov_dec_27">Nov-Dec 2027</option><option value="dec_jan_28">Dec-Jan 2027/28</option><option value="jan_feb_28">Jan-Feb 2028</option><option value="feb_mar_28">Feb-Mar 2028</option><option value="mar_apr_28">Mar-Apr 2028</option><option value="apr_may_28">Apr-May 2028</option><option value="may_jun_28">May-Jun 2028</option><option value="jun_jul_28">Jun-Jul 2028</option><option value="jul_aug_28">Jul-Aug 2028</option><option value="aug_sep_28">Aug-Sep 2028</option><option value="sep_oct_28">Sep-Oct 2028</option><option value="oct_nov_28">Oct-Nov 2028</option><option value="nov_dec_28">Nov-Dec 2028</option><option value="dec_jan_29">Dec-Jan 2028/29</option><option value="jan_feb_29">Jan-Feb 2029</option><option value="feb_mar_29">Feb-Mar 2029</option><option value="mar_apr_29">Mar-Apr 2029</option><option value="apr_may_29">Apr-May 2029</option></select></div>
   </div>
   <div class="modal-footer">
     <button class="btn btn-ghost" onclick="closeSavingModal()">Cancel</button>
@@ -468,11 +590,11 @@ select option{background:var(--surface2)}
   <div class="form-grid">
     <div class="form-group full"><label>Goal Name</label><input id="g-name" type="text" placeholder="e.g. Holiday Fund, New Car…" autocomplete="off"></div>
     <div class="form-group"><label>Target Amount £</label><input id="g-target" type="number" step="0.01" min="0" placeholder="0.00"></div>
-    <div class="form-group"><label>Deadline Month</label><select id="g-deadline"></select></div>
+    <div class="form-group"><label>Deadline Month</label><select id="g-deadline"><option value="may_jun_26">May-Jun 2026</option><option value="jun_jul_26">Jun-Jul 2026</option><option value="jul_aug_26">Jul-Aug 2026</option><option value="aug_sep_26">Aug-Sep 2026</option><option value="sep_oct_26">Sep-Oct 2026</option><option value="oct_nov_26">Oct-Nov 2026</option><option value="nov_dec_26">Nov-Dec 2026</option><option value="dec_jan_27">Dec-Jan 2026/27</option><option value="jan_feb_27">Jan-Feb 2027</option><option value="feb_mar_27">Feb-Mar 2027</option><option value="mar_apr_27">Mar-Apr 2027</option><option value="apr_may_27">Apr-May 2027</option><option value="may_jun_27">May-Jun 2027</option><option value="jun_jul_27">Jun-Jul 2027</option><option value="jul_aug_27">Jul-Aug 2027</option><option value="aug_sep_27">Aug-Sep 2027</option><option value="sep_oct_27">Sep-Oct 2027</option><option value="oct_nov_27">Oct-Nov 2027</option><option value="nov_dec_27">Nov-Dec 2027</option><option value="dec_jan_28">Dec-Jan 2027/28</option><option value="jan_feb_28">Jan-Feb 2028</option><option value="feb_mar_28">Feb-Mar 2028</option><option value="mar_apr_28">Mar-Apr 2028</option><option value="apr_may_28">Apr-May 2028</option><option value="may_jun_28">May-Jun 2028</option><option value="jun_jul_28">Jun-Jul 2028</option><option value="jul_aug_28">Jul-Aug 2028</option><option value="aug_sep_28">Aug-Sep 2028</option><option value="sep_oct_28">Sep-Oct 2028</option><option value="oct_nov_28">Oct-Nov 2028</option><option value="nov_dec_28">Nov-Dec 2028</option><option value="dec_jan_29">Dec-Jan 2028/29</option><option value="jan_feb_29">Jan-Feb 2029</option><option value="feb_mar_29">Feb-Mar 2029</option><option value="mar_apr_29">Mar-Apr 2029</option><option value="apr_may_29">Apr-May 2029</option></select></div>
   </div>
-  <div id="goalPreview" style="margin-top:16px;padding:14px;background:var(--surface2);border-radius:var(--radius-sm);font-size:.88rem;display:none">
+  <div id="goalPreview" style="margin-top: 16px; padding: 14px; background: var(--surface2); border-radius: var(--radius-sm); font-size: 0.88rem; display: block;">
     <div style="font-weight:700;color:#5a3a9a;margin-bottom:4px">📊 Calculation Preview</div>
-    <div id="goalPreviewText" style="color:var(--subtext);line-height:1.6"></div>
+    <div id="goalPreviewText" style="color:var(--subtext);line-height:1.6">Target: <strong>£1000.00</strong><br>Deadline: <strong>Nov-Dec 2026</strong> (4 months away)<br>Already saved: <strong>£0.00</strong><br>Still needed: <strong>£1000.00</strong><br><span style="color:#5a3a9a;font-size:1rem;font-weight:800">→ Save £250.00/month to reach your goal</span></div>
   </div>
   <div class="modal-footer">
     <button class="btn btn-ghost" onclick="closeGoalModal()">Cancel</button>
@@ -497,7 +619,7 @@ select option{background:var(--surface2)}
       <input id="cfg-token" type="password" placeholder="Your secret token" autocomplete="off">
     </div>
   </div>
-  <div id="cfgTestResult" style="margin-top:12px;font-size:.82rem;min-height:20px"></div>
+  <div id="cfgTestResult" style="margin-top:12px;font-size:.82rem;min-height:20px"><span class="status-dot green"></span><strong style="color:var(--green)">Connected ✔</strong></div>
   <div class="modal-footer" style="margin-top:16px">
     <button class="btn btn-ghost" onclick="setupOffline()">Use Offline</button>
     <button class="btn btn-ghost" onclick="testConnection()" id="testBtn">🔌 Test</button>
@@ -505,7 +627,7 @@ select option{background:var(--surface2)}
   </div>
 </div></div>
 
-<div class="toast" id="toast"></div>
+<div class="toast" id="toast">Savings entry deleted</div>
 <input type="file" id="fileInput" accept=".json" style="display:none" onchange="handleFileLoad(event)">
 
 <script>
@@ -600,7 +722,7 @@ function seedData(){data={_debts:[],_savings:[],_debtPayments:{},_savingsGoals:[
 
 // ── SETUP ──────────────────────────────────────────────────────────────────────
 function showSetupModal(isEdit){
-  document.getElementById('cfg-url').value=workerUrl||'';document.getElementById('cfg-token').value='';document.getElementById('cfgTestResult').innerHTML='';
+  document.getElementById('cfg-url').value=workerUrl||'https://tom-finance-api.tompierce32.workers.dev';document.getElementById('cfg-token').value='';document.getElementById('cfgTestResult').innerHTML='';
   document.getElementById('setupSubText').textContent=isEdit?'Update your Cloudflare Worker connection details.':'Connect your Cloudflare Worker to sync data across all devices.';
   document.getElementById('setupOverlay').classList.add('open');
   if(!isEdit){const b=localStorage.getItem('tomfinance_3yr_backup')||localStorage.getItem('tomfinance_3yr');if(b){try{data=JSON.parse(b);migrate();}catch(e){seedData();}}else seedData();isOfflineMode=true;showSaveStatus('local','● Local Only');buildTabs();showMonth(MONTHS[0].id);if(currentView==='goals')renderGoalsTab();}
@@ -656,7 +778,9 @@ function renderSummary(){
   const savingsLogTotal=(data._savings||[]).reduce((s,e)=>s+(e.confirmed?(e.type==='deposit'?e.amount:-e.amount):0),0);
   const goalPayTotal=Object.values(data._goalPayments||{}).filter(p=>p.confirmed).reduce((s,p)=>s+p.amount,0);
   const savingsTotal=savingsLogTotal+goalPayTotal;
-  const bal=inc-exp-debtPmts;
+  const monthSavingsDeduction=(data._savings||[]).filter(s=>s.monthId===currentMonth&&s.confirmed).reduce((sum,s)=>sum+(s.type==='deposit'?s.amount:-s.amount),0);
+  const monthGoalDeduction=(data._savingsGoals||[]).reduce((sum,g)=>{const p=(data._goalPayments||{})[g.id+'_'+currentMonth];return sum+(p&&p.confirmed?p.amount:0);},0);
+  const bal=inc-exp-debtPmts-monthSavingsDeduction-monthGoalDeduction;
   document.getElementById('summaryGrid').innerHTML=`
     <div class="card"><div class="card-label">💰 Income</div><div class="card-value green">£${inc.toFixed(2)}</div></div>
     <div class="card"><div class="card-label">💸 Expenses</div><div class="card-value red">£${exp.toFixed(2)}</div></div>
@@ -1070,6 +1194,8 @@ function renderGoalsTab(){
     let gConf=0;
     for(let i=sIdx;i<=dIdx;i++){const k=goal.id+'_'+MONTHS[i].id;const p=gp[k];if(p&&p.confirmed)gConf+=p.amount;}
     const achieved=gConf>=goal.target;const rem=Math.max(0,goal.target-gConf);
+    const totalMonths=Math.max(1,dIdx-sIdx+1);
+    const evenAmt=goal.target/totalMonths;
     const mNow=mLeft>0?rem/mLeft:rem;
     const pct=Math.min(100,Math.round((gConf/goal.target)*100));
     const bc=pct>=100?'#1a8f4e':pct>=60?'#c47a1a':'#a78bfa';
@@ -1077,7 +1203,7 @@ function renderGoalsTab(){
     for(let i=sIdx;i<=dIdx;i++){
       const mId=MONTHS[i].id;const k=goal.id+'_'+mId;const py=gp[k]||{};
       const ip=i<cmIdx;const ic=i===cmIdx;
-      const mlh=Math.max(1,dIdx-i+1);const rh=Math.max(0,goal.target-runC);const mh=rh/mlh;
+      const mh=evenAmt;
       const c=!!py.confirmed;const pa=c?py.amount:mh;if(c)runC+=pa;
       const done=runC>=goal.target;
       const lbl=MONTHS[i].label+' '+MONTHS[i].year;
@@ -1121,5 +1247,6 @@ document.addEventListener('keydown',e=>{
 
 init();
 </script>
-</body>
-</html>
+
+
+</body></html>
