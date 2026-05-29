@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0077)file:///C:/Users/TomPierce/Downloads/Tom_s_Finance_Tracker___3_Year_Plan.html -->
+<!-- saved from url=(0044)https://tomtrackers.tompierce32.workers.dev/ -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -237,6 +237,139 @@ select option{background:var(--surface2)}
 .goal-empty-view{text-align:center;padding:48px 20px;color:var(--muted)}
 .goal-empty-view .icon{font-size:3rem;margin-bottom:12px}
 @media(max-width:640px){.view-tab{font-size:.73rem;padding:10px 4px}}
+
+/* ── SUMMARY CARD CLICKABLE ── */
+.card{cursor:pointer;transition:all .18s;user-select:none}
+.card:hover{background:#f0f8ff;border-color:#1a6fa855;transform:translateY(-1px);box-shadow:0 3px 12px #1a6fa822}
+.card:active{transform:scale(.97)}
+.card-value{position:relative}
+
+/* ── SUMMARY POPUP ── */
+.summary-popup-overlay{position:fixed;inset:0;background:#00000088;z-index:250;display:flex;align-items:flex-end;justify-content:center;opacity:0;pointer-events:none;transition:opacity .2s}
+.summary-popup-overlay.open{opacity:1;pointer-events:all}
+.summary-popup{background:var(--surface);width:100%;max-width:460px;border-radius:var(--radius) var(--radius) 0 0;padding:20px;max-height:80vh;overflow-y:auto;transform:translateY(40px);transition:transform .25s cubic-bezier(.4,0,.2,1)}
+.summary-popup-overlay.open .summary-popup{transform:translateY(0)}
+@media(min-width:600px){.summary-popup-overlay{align-items:center}.summary-popup{border-radius:var(--radius);max-height:75vh}}
+.sp-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;padding-bottom:12px;border-bottom:2px solid var(--surface2)}
+.sp-title{font-size:1.05rem;font-weight:800;color:#1a6fa8;display:flex;align-items:center;gap:8px}
+.sp-total{font-size:1.4rem;font-weight:900;color:var(--text)}
+.sp-close{background:none;border:none;font-size:1.4rem;cursor:pointer;color:var(--subtext);padding:4px;border-radius:6px;line-height:1}
+.sp-close:hover{background:var(--surface2)}
+.sp-item{display:flex;justify-content:space-between;align-items:center;padding:10px 12px;border-radius:var(--radius-sm);margin-bottom:6px;border:1px solid transparent;cursor:pointer;transition:background .15s}
+.sp-item:hover{background:var(--surface2)}
+.sp-item-name{font-size:.88rem;font-weight:600;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.sp-item-meta{font-size:.72rem;color:var(--muted);margin-top:2px}
+.sp-item-amount{font-family:'Consolas',monospace;font-weight:800;font-size:.95rem;margin-left:12px;flex-shrink:0}
+.sp-item-amount.green{color:var(--green)}.sp-item-amount.red{color:var(--red)}.sp-item-amount.teal{color:var(--teal)}.sp-item-amount.orange{color:var(--orange)}
+.sp-empty{text-align:center;padding:28px 16px;color:var(--muted);font-size:.9rem}
+.sp-section-label{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);padding:6px 12px 4px;margin-top:8px}
+.sp-item-badge{display:inline-block;font-size:.6rem;padding:2px 6px;border-radius:10px;font-weight:700;margin-left:6px;vertical-align:middle}
+.sp-item-badge.recur{background:#1a8a7a22;color:#1a8a7a}
+.sp-item-badge.debt{background:#e74c3c22;color:#e74c3c}
+
+/* ── RECURRING MANAGER MODAL ── */
+.recur-mgr-overlay{position:fixed;inset:0;background:#00000099;z-index:260;display:flex;align-items:flex-end;justify-content:center;opacity:0;pointer-events:none;transition:opacity .2s}
+.recur-mgr-overlay.open{opacity:1;pointer-events:all}
+.recur-mgr{background:var(--surface);width:100%;max-width:520px;border-radius:var(--radius) var(--radius) 0 0;padding:20px;max-height:88vh;overflow-y:auto;transform:translateY(40px);transition:transform .25s cubic-bezier(.4,0,.2,1)}
+.recur-mgr-overlay.open .recur-mgr{transform:translateY(0)}
+@media(min-width:600px){.recur-mgr-overlay{align-items:center}.recur-mgr{border-radius:var(--radius);max-height:82vh}}
+.rm-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+.rm-title{font-size:1.05rem;font-weight:800;color:#1a8a7a}
+.rm-close{background:none;border:none;font-size:1.4rem;cursor:pointer;color:var(--subtext);padding:4px;border-radius:6px;line-height:1}
+.rm-close:hover{background:var(--surface2)}
+.rm-item{background:var(--surface2);border-radius:var(--radius-sm);margin-bottom:8px;overflow:hidden;border:1px solid var(--surface3)}
+.rm-item-header{display:flex;justify-content:space-between;align-items:center;padding:12px 14px;cursor:pointer;gap:8px}
+.rm-item-header:hover{background:var(--surface3)}
+.rm-item-name{font-weight:700;font-size:.92rem;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.rm-item-amount{font-family:'Consolas',monospace;font-weight:700;font-size:.9rem;color:var(--red);flex-shrink:0}
+.rm-item-amount.income{color:var(--green)}
+.rm-item-chevron{font-size:.8rem;color:var(--muted);margin-left:6px;transition:transform .2s;flex-shrink:0}
+.rm-item.open .rm-item-chevron{transform:rotate(180deg)}
+.rm-months-list{display:none;border-top:1px solid var(--surface3)}
+.rm-item.open .rm-months-list{display:block}
+.rm-month-row{display:flex;align-items:center;justify-content:space-between;padding:9px 14px;border-bottom:1px solid var(--surface3);gap:8px}
+.rm-month-row:last-child{border-bottom:none}
+.rm-month-row:hover{background:#e8f4fd}
+.rm-month-label{font-size:.82rem;color:var(--subtext);flex:1}
+.rm-month-label.current-month{font-weight:700;color:#1a6fa8}
+.rm-month-actions{display:flex;gap:6px}
+.rm-btn{border:none;border-radius:6px;padding:5px 9px;font-size:.72rem;font-weight:700;cursor:pointer;transition:all .15s}
+.rm-btn:active{transform:scale(.92)}
+.rm-btn-edit{background:#dde8f0;color:#1a6fa8;border:1px solid #1a6fa844}.rm-btn-edit:hover{background:#1a6fa8;color:#fff}
+.rm-btn-del{background:#fad5d0;color:#c0392b;border:1px solid #c0392b44}.rm-btn-del:hover{background:#c0392b;color:#fff}
+.rm-btn-del-all{background:#c0392b;color:#fff;font-size:.7rem;padding:4px 8px}
+.rm-btn-del-all:hover{background:#a93226}
+.rm-empty{text-align:center;padding:32px 16px;color:var(--muted);font-size:.9rem}
+.rm-empty .icon{font-size:2rem;margin-bottom:8px}
+
+/* ── MOBILE IMPROVEMENTS (Samsung Ultra — 400–430px wide) ── */
+@media(max-width:500px){
+  /* Header: tighter */
+  .header{padding:8px 10px;gap:6px}
+  .header-title{font-size:.95rem;gap:5px}
+  .btn-text{display:none} /* hide button text labels, show icons only */
+  .btn{padding:7px 9px;font-size:.82rem}
+  .btn-sm{padding:6px 8px}
+  .save-status{font-size:.65rem;padding:3px 7px}
+
+  /* Summary grid: 2 columns fixed for compact display */
+  .summary-grid{grid-template-columns:repeat(2,1fr);gap:7px;margin-bottom:10px}
+  .card{padding:10px 10px}
+  .card-label{font-size:.6rem;letter-spacing:.03em;margin-bottom:3px}
+  .card-value{font-size:1.1rem}
+
+  /* Month tabs: smaller */
+  .month-tab{padding:7px 7px;font-size:.75rem}
+  .year-sep{font-size:.62rem;padding:3px 6px}
+  .months-tabs{padding:6px 8px;gap:4px}
+
+  /* Progress bar: compact */
+  .year-progress{padding:8px 10px;gap:10px}
+  .progress-label{font-size:.7rem}
+
+  /* View tabs */
+  .view-tab{font-size:.72rem;padding:9px 6px}
+
+  /* Toolbar: wrap nicely */
+  .toolbar{gap:5px}
+
+  /* Table: show only essential columns */
+  .table-wrap td,.table-wrap th{padding:8px 7px;font-size:.8rem}
+  .table-wrap td.num,.table-wrap th.num{font-size:.78rem}
+
+  /* Make checkbox column thinner */
+  .cb-cell{width:34px;padding:6px 4px!important}
+  .cb{width:20px;height:20px;font-size:.78rem}
+
+  /* Main padding */
+  .main{padding:8px}
+
+  /* Modal: full screen on mobile */
+  .modal{padding:16px}
+  .form-grid{gap:10px}
+
+  /* FAB: slightly smaller */
+  .fab{width:50px;height:50px;font-size:1.4rem;bottom:16px;right:14px}
+
+  /* Toast: wider */
+  .toast{font-size:.8rem;padding:9px 16px;bottom:72px}
+
+  /* Summary popup: full height */
+  .summary-popup{padding:16px}
+  .sp-item{padding:9px 10px}
+  .sp-item-name{font-size:.83rem}
+  .sp-item-amount{font-size:.88rem}
+
+  /* Recurring manager */
+  .recur-mgr{padding:16px}
+}
+
+@media(max-width:380px){
+  .summary-grid{grid-template-columns:repeat(2,1fr);gap:5px}
+  .card-value{font-size:1rem}
+  .card-label{font-size:.58rem}
+  .btn{padding:6px 7px;font-size:.78rem}
+}
 </style>
 </head>
 <body>
@@ -252,37 +385,38 @@ select option{background:var(--surface2)}
   </div>
 </div>
 
-<div class="months-nav"><div class="months-tabs" id="monthsTabs"><span class="year-sep">2026</span><button class="month-tab has-data" title="May-Jun 2026" id="tab_may_jun_26">May-Jun</button><button class="month-tab has-data" title="Jun-Jul 2026" id="tab_jun_jul_26">Jun-Jul</button><button class="month-tab has-data active" title="Jul-Aug 2026" id="tab_jul_aug_26">Jul-Aug</button><button class="month-tab has-data" title="Aug-Sep 2026" id="tab_aug_sep_26">Aug-Sep</button><button class="month-tab has-data" title="Sep-Oct 2026" id="tab_sep_oct_26">Sep-Oct</button><button class="month-tab has-data" title="Oct-Nov 2026" id="tab_oct_nov_26">Oct-Nov</button><button class="month-tab has-data" title="Nov-Dec 2026" id="tab_nov_dec_26">Nov-Dec</button><span class="year-sep">2026/27</span><button class="month-tab has-data" title="Dec-Jan 2026/27" id="tab_dec_jan_27">Dec-Jan</button><span class="year-sep">2027</span><button class="month-tab has-data" title="Jan-Feb 2027" id="tab_jan_feb_27">Jan-Feb</button><button class="month-tab has-data" title="Feb-Mar 2027" id="tab_feb_mar_27">Feb-Mar</button><button class="month-tab has-data" title="Mar-Apr 2027" id="tab_mar_apr_27">Mar-Apr</button><button class="month-tab has-data" title="Apr-May 2027" id="tab_apr_may_27">Apr-May</button><button class="month-tab has-data" title="May-Jun 2027" id="tab_may_jun_27">May-Jun</button><button class="month-tab has-data" title="Jun-Jul 2027" id="tab_jun_jul_27">Jun-Jul</button><button class="month-tab has-data" title="Jul-Aug 2027" id="tab_jul_aug_27">Jul-Aug</button><button class="month-tab has-data" title="Aug-Sep 2027" id="tab_aug_sep_27">Aug-Sep</button><button class="month-tab has-data" title="Sep-Oct 2027" id="tab_sep_oct_27">Sep-Oct</button><button class="month-tab has-data" title="Oct-Nov 2027" id="tab_oct_nov_27">Oct-Nov</button><button class="month-tab has-data" title="Nov-Dec 2027" id="tab_nov_dec_27">Nov-Dec</button><span class="year-sep">2027/28</span><button class="month-tab has-data" title="Dec-Jan 2027/28" id="tab_dec_jan_28">Dec-Jan</button><span class="year-sep">2028</span><button class="month-tab has-data" title="Jan-Feb 2028" id="tab_jan_feb_28">Jan-Feb</button><button class="month-tab has-data" title="Feb-Mar 2028" id="tab_feb_mar_28">Feb-Mar</button><button class="month-tab has-data" title="Mar-Apr 2028" id="tab_mar_apr_28">Mar-Apr</button><button class="month-tab has-data" title="Apr-May 2028" id="tab_apr_may_28">Apr-May</button><button class="month-tab has-data" title="May-Jun 2028" id="tab_may_jun_28">May-Jun</button><button class="month-tab has-data" title="Jun-Jul 2028" id="tab_jun_jul_28">Jun-Jul</button><button class="month-tab has-data" title="Jul-Aug 2028" id="tab_jul_aug_28">Jul-Aug</button><button class="month-tab has-data" title="Aug-Sep 2028" id="tab_aug_sep_28">Aug-Sep</button><button class="month-tab has-data" title="Sep-Oct 2028" id="tab_sep_oct_28">Sep-Oct</button><button class="month-tab has-data" title="Oct-Nov 2028" id="tab_oct_nov_28">Oct-Nov</button><button class="month-tab has-data" title="Nov-Dec 2028" id="tab_nov_dec_28">Nov-Dec</button><span class="year-sep">2028/29</span><button class="month-tab has-data" title="Dec-Jan 2028/29" id="tab_dec_jan_29">Dec-Jan</button><span class="year-sep">2029</span><button class="month-tab has-data" title="Jan-Feb 2029" id="tab_jan_feb_29">Jan-Feb</button><button class="month-tab has-data" title="Feb-Mar 2029" id="tab_feb_mar_29">Feb-Mar</button><button class="month-tab has-data" title="Mar-Apr 2029" id="tab_mar_apr_29">Mar-Apr</button><button class="month-tab has-data" title="Apr-May 2029" id="tab_apr_may_29">Apr-May</button></div></div>
+<div class="months-nav"><div class="months-tabs" id="monthsTabs"><span class="year-sep">2026</span><button class="month-tab has-data" title="May-Jun 2026" id="tab_may_jun_26">May-Jun</button><button class="month-tab has-data" title="Jun-Jul 2026" id="tab_jun_jul_26">Jun-Jul</button><button class="month-tab has-data" title="Jul-Aug 2026" id="tab_jul_aug_26">Jul-Aug</button><button class="month-tab has-data" title="Aug-Sep 2026" id="tab_aug_sep_26">Aug-Sep</button><button class="month-tab has-data" title="Sep-Oct 2026" id="tab_sep_oct_26">Sep-Oct</button><button class="month-tab has-data" title="Oct-Nov 2026" id="tab_oct_nov_26">Oct-Nov</button><button class="month-tab has-data active" title="Nov-Dec 2026" id="tab_nov_dec_26">Nov-Dec</button><span class="year-sep">2026/27</span><button class="month-tab has-data" title="Dec-Jan 2026/27" id="tab_dec_jan_27">Dec-Jan</button><span class="year-sep">2027</span><button class="month-tab has-data" title="Jan-Feb 2027" id="tab_jan_feb_27">Jan-Feb</button><button class="month-tab has-data" title="Feb-Mar 2027" id="tab_feb_mar_27">Feb-Mar</button><button class="month-tab has-data" title="Mar-Apr 2027" id="tab_mar_apr_27">Mar-Apr</button><button class="month-tab has-data" title="Apr-May 2027" id="tab_apr_may_27">Apr-May</button><button class="month-tab has-data" title="May-Jun 2027" id="tab_may_jun_27">May-Jun</button><button class="month-tab has-data" title="Jun-Jul 2027" id="tab_jun_jul_27">Jun-Jul</button><button class="month-tab has-data" title="Jul-Aug 2027" id="tab_jul_aug_27">Jul-Aug</button><button class="month-tab has-data" title="Aug-Sep 2027" id="tab_aug_sep_27">Aug-Sep</button><button class="month-tab has-data" title="Sep-Oct 2027" id="tab_sep_oct_27">Sep-Oct</button><button class="month-tab has-data" title="Oct-Nov 2027" id="tab_oct_nov_27">Oct-Nov</button><button class="month-tab has-data" title="Nov-Dec 2027" id="tab_nov_dec_27">Nov-Dec</button><span class="year-sep">2027/28</span><button class="month-tab has-data" title="Dec-Jan 2027/28" id="tab_dec_jan_28">Dec-Jan</button><span class="year-sep">2028</span><button class="month-tab has-data" title="Jan-Feb 2028" id="tab_jan_feb_28">Jan-Feb</button><button class="month-tab has-data" title="Feb-Mar 2028" id="tab_feb_mar_28">Feb-Mar</button><button class="month-tab has-data" title="Mar-Apr 2028" id="tab_mar_apr_28">Mar-Apr</button><button class="month-tab has-data" title="Apr-May 2028" id="tab_apr_may_28">Apr-May</button><button class="month-tab has-data" title="May-Jun 2028" id="tab_may_jun_28">May-Jun</button><button class="month-tab has-data" title="Jun-Jul 2028" id="tab_jun_jul_28">Jun-Jul</button><button class="month-tab has-data" title="Jul-Aug 2028" id="tab_jul_aug_28">Jul-Aug</button><button class="month-tab has-data" title="Aug-Sep 2028" id="tab_aug_sep_28">Aug-Sep</button><button class="month-tab has-data" title="Sep-Oct 2028" id="tab_sep_oct_28">Sep-Oct</button><button class="month-tab has-data" title="Oct-Nov 2028" id="tab_oct_nov_28">Oct-Nov</button><button class="month-tab has-data" title="Nov-Dec 2028" id="tab_nov_dec_28">Nov-Dec</button><span class="year-sep">2028/29</span><button class="month-tab has-data" title="Dec-Jan 2028/29" id="tab_dec_jan_29">Dec-Jan</button><span class="year-sep">2029</span><button class="month-tab has-data" title="Jan-Feb 2029" id="tab_jan_feb_29">Jan-Feb</button><button class="month-tab has-data" title="Feb-Mar 2029" id="tab_feb_mar_29">Feb-Mar</button><button class="month-tab has-data" title="Mar-Apr 2029" id="tab_mar_apr_29">Mar-Apr</button><button class="month-tab has-data" title="Apr-May 2029" id="tab_apr_may_29">Apr-May</button></div></div>
 
 <div class="main">
   <div class="year-progress" id="yearProgress" style="display: flex;">
-    <span class="progress-label" id="progressLabel">Month 3 of 36</span>
-    <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width: 6%;"></div></div>
-    <span class="progress-label" id="progressPct">6% through plan</span>
+    <span class="progress-label" id="progressLabel">Month 7 of 36</span>
+    <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width: 17%;"></div></div>
+    <span class="progress-label" id="progressPct">17% through plan</span>
   </div>
   <div class="summary-grid" id="summaryGrid">
     <div class="card"><div class="card-label">💰 Income</div><div class="card-value green">£2200.00</div></div>
     <div class="card"><div class="card-label">💸 Expenses</div><div class="card-value red">£855.10</div></div>
-    <div class="card"><div class="card-label">💳 Debt Pmts</div><div class="card-value red">£200.08</div></div>
-    <div class="card"><div class="card-label">⚖ Balance</div><div class="card-value green">£1144.82</div></div>
+    <div class="card"><div class="card-label">💳 Debt Pmts</div><div class="card-value red">£200.03</div></div>
+    <div class="card"><div class="card-label">⚖ Balance</div><div class="card-value green">£1144.87</div></div>
     <div class="card"><div class="card-label">✔ Paid</div><div class="card-value teal">£0.00</div></div>
     <div class="card"><div class="card-label">⏳ Outstanding</div><div class="card-value orange">£855.10</div></div>
-    <div class="card"><div class="card-label">💳 Total Debt</div><div class="card-value red">£2247.59</div></div>
+    <div class="card"><div class="card-label">💳 Total Debt</div><div class="card-value red">£2138.51</div></div>
     <div class="card"><div class="card-label">🏦 Savings</div><div class="card-value teal">£200.00</div></div></div>
   <div class="view-tabs">
-    <button class="view-tab" id="vt-transactions" onclick="showView(&#39;transactions&#39;)">📊 Transactions</button>
-    <button class="view-tab active" id="vt-savings" onclick="showView(&#39;savings&#39;)">🏦 Savings</button>
+    <button class="view-tab active" id="vt-transactions" onclick="showView(&#39;transactions&#39;)">📊 Transactions</button>
+    <button class="view-tab" id="vt-savings" onclick="showView(&#39;savings&#39;)">🏦 Savings</button>
     <button class="view-tab" id="vt-goals" onclick="showView(&#39;goals&#39;)">🎯 Goals</button>
   </div>
 
   <!-- Transactions Panel -->
-  <div id="view-transactions" style="display: none;">
+  <div id="view-transactions" style="display: block;">
   <div class="toolbar">
     <button class="btn btn-success btn-sm" onclick="openAdd()">➕ <span class="btn-text">Add</span></button>
     <button class="btn btn-sm" style="background:#1a6fa8;color:#fff" onclick="openEdit()">✏️ <span class="btn-text">Edit</span></button>
     <button class="btn btn-danger btn-sm" onclick="confirmDelete()">🗑 <span class="btn-text">Delete</span></button>
     <button class="btn btn-warn btn-sm" onclick="togglePaid()">✔ <span class="btn-text">Toggle Paid</span></button>
     <button class="btn btn-ghost btn-sm" onclick="copyMonthTemplate()">📋 <span class="btn-text">Copy Last</span></button>
+    <button class="btn btn-sm btn-teal" onclick="openRecurMgr()">🔄 <span class="btn-text">Recurring</span></button>
     <button class="btn btn-sm" onclick="openDebtModal()" style="background:#9a1a0e;color:#fff">💳 <span class="btn-text">Debts</span></button>
   </div>
     <div class="table-wrap" id="tableWrap"><table><thead><tr>
@@ -290,54 +424,54 @@ select option{background:var(--surface2)}
     <th class="hide-mobile">Category</th><th class="hide-mobile">Method</th>
     <th class="num">In £</th><th class="num">Out £</th>
     <th style="text-align:center">Paid</th><th class="num">Balance £</th>
-  </tr></thead><tbody><tr class="row-housing unpaid-row" onclick="selectRow(0)" ondblclick="openEdit()">
+  </tr></thead><tbody><tr class="row-income" onclick="selectRow(0)" ondblclick="openEdit()">
       <td class="cb-cell"><div class="cb"></div></td>
-      <td class="hide-mobile" style="color:var(--muted);font-size:.8rem">31/07/2026</td>
+      <td class="hide-mobile" style="color:var(--muted);font-size:.8rem">28/11/2026</td>
+      <td><strong>LCC</strong><span class="recur-badge">RECUR</span></td>
+      <td class="hide-mobile"><span class="cat-badge" style="background:#2ecc7122;color:#2ecc71">Income</span></td>
+      <td class="hide-mobile" style="color:var(--muted);font-size:.82rem">Basic</td>
+      <td class="num"><span class="income-val">£2200.00</span></td><td class="num"><span style="color:var(--muted)">—</span></td>
+      <td style="text-align:center"><span class="paid-no">✖</span></td>
+      <td class="num bal-pos">£2200.00</td>
+    </tr><tr class="row-housing unpaid-row" onclick="selectRow(1)" ondblclick="openEdit()">
+      <td class="cb-cell"><div class="cb"></div></td>
+      <td class="hide-mobile" style="color:var(--muted);font-size:.8rem">30/11/2026</td>
       <td><strong>Rent Bills</strong><span class="recur-badge">RECUR</span></td>
       <td class="hide-mobile"><span class="cat-badge" style="background:#5dade222;color:#5dade2">Housing</span></td>
       <td class="hide-mobile" style="color:var(--muted);font-size:.82rem">Basic</td>
       <td class="num"><span style="color:var(--muted)">—</span></td><td class="num"><span class="expense-val">£446.00</span></td>
       <td style="text-align:center"><span class="paid-no">✖</span></td>
-      <td class="num bal-neg">£-446.00</td>
-    </tr><tr class="row-car unpaid-row" onclick="selectRow(1)" ondblclick="openEdit()">
+      <td class="num bal-pos">£1754.00</td>
+    </tr><tr class="row-car unpaid-row" onclick="selectRow(2)" ondblclick="openEdit()">
       <td class="cb-cell"><div class="cb"></div></td>
-      <td class="hide-mobile" style="color:var(--muted);font-size:.8rem">29/07/2026</td>
+      <td class="hide-mobile" style="color:var(--muted);font-size:.8rem">29/11/2026</td>
       <td><strong>PO Insurance</strong><span class="recur-badge">RECUR</span></td>
       <td class="hide-mobile"><span class="cat-badge" style="background:#af7ac522;color:#af7ac5">Car insuance</span></td>
       <td class="hide-mobile" style="color:var(--muted);font-size:.82rem"></td>
       <td class="num"><span style="color:var(--muted)">—</span></td><td class="num"><span class="expense-val">£45.17</span></td>
       <td style="text-align:center"><span class="paid-no">✖</span></td>
-      <td class="num bal-neg">£-491.17</td>
-    </tr><tr class="row-car unpaid-row" onclick="selectRow(2)" ondblclick="openEdit()">
+      <td class="num bal-pos">£1708.83</td>
+    </tr><tr class="row-car unpaid-row" onclick="selectRow(3)" ondblclick="openEdit()">
       <td class="cb-cell"><div class="cb"></div></td>
-      <td class="hide-mobile" style="color:var(--muted);font-size:.8rem">26/07/2026</td>
+      <td class="hide-mobile" style="color:var(--muted);font-size:.8rem">26/11/2026</td>
       <td><strong>DVLA</strong><span class="recur-badge">RECUR</span></td>
       <td class="hide-mobile"><span class="cat-badge" style="background:#af7ac522;color:#af7ac5">Car Tax</span></td>
       <td class="hide-mobile" style="color:var(--muted);font-size:.82rem">Basic</td>
       <td class="num"><span style="color:var(--muted)">—</span></td><td class="num"><span class="expense-val">£14.43</span></td>
       <td style="text-align:center"><span class="paid-no">✖</span></td>
-      <td class="num bal-neg">£-505.60</td>
-    </tr><tr class=" unpaid-row" onclick="selectRow(3)" ondblclick="openEdit()">
+      <td class="num bal-pos">£1694.40</td>
+    </tr><tr class=" unpaid-row" onclick="selectRow(4)" ondblclick="openEdit()">
       <td class="cb-cell"><div class="cb"></div></td>
-      <td class="hide-mobile" style="color:var(--muted);font-size:.8rem">06/08/2026</td>
+      <td class="hide-mobile" style="color:var(--muted);font-size:.8rem">06/12/2026</td>
       <td><strong>ID mobile</strong><span class="recur-badge">RECUR</span></td>
       <td class="hide-mobile"><span class="cat-badge" style="background:#6c708622;color:#6c7086">—</span></td>
       <td class="hide-mobile" style="color:var(--muted);font-size:.82rem">Current</td>
       <td class="num"><span style="color:var(--muted)">—</span></td><td class="num"><span class="expense-val">£37.00</span></td>
       <td style="text-align:center"><span class="paid-no">✖</span></td>
-      <td class="num bal-neg">£-542.60</td>
-    </tr><tr class="row-income" onclick="selectRow(4)" ondblclick="openEdit()">
-      <td class="cb-cell"><div class="cb"></div></td>
-      <td class="hide-mobile" style="color:var(--muted);font-size:.8rem">29/06/2026</td>
-      <td><strong>LCC</strong></td>
-      <td class="hide-mobile"><span class="cat-badge" style="background:#2ecc7122;color:#2ecc71">Income</span></td>
-      <td class="hide-mobile" style="color:var(--muted);font-size:.82rem">Basic</td>
-      <td class="num"><span class="income-val">£2200.00</span></td><td class="num"><span style="color:var(--muted)">—</span></td>
-      <td style="text-align:center"><span class="paid-no">✖</span></td>
       <td class="num bal-pos">£1657.40</td>
     </tr><tr class=" unpaid-row" onclick="selectRow(5)" ondblclick="openEdit()">
       <td class="cb-cell"><div class="cb"></div></td>
-      <td class="hide-mobile" style="color:var(--muted);font-size:.8rem">29/07/2026</td>
+      <td class="hide-mobile" style="color:var(--muted);font-size:.8rem">29/11/2026</td>
       <td><strong>Lou-187.5-50-100</strong><span class="recur-badge">RECUR</span></td>
       <td class="hide-mobile"><span class="cat-badge" style="background:#6c708622;color:#6c7086">—</span></td>
       <td class="hide-mobile" style="color:var(--muted);font-size:.82rem">Basic</td>
@@ -346,14 +480,14 @@ select option{background:var(--surface2)}
       <td class="num bal-pos">£1544.90</td>
     </tr><tr class=" unpaid-row" onclick="selectRow(6)" ondblclick="openEdit()">
       <td class="cb-cell"><div class="cb"></div></td>
-      <td class="hide-mobile" style="color:var(--muted);font-size:.8rem">28/07/2026</td>
+      <td class="hide-mobile" style="color:var(--muted);font-size:.8rem">28/11/2026</td>
       <td><strong>Joint Food (Monzo)</strong><span class="recur-badge">RECUR</span></td>
       <td class="hide-mobile"><span class="cat-badge" style="background:#6c708622;color:#6c7086">—</span></td>
       <td class="hide-mobile" style="color:var(--muted);font-size:.82rem">Current</td>
       <td class="num"><span style="color:var(--muted)">—</span></td><td class="num"><span class="expense-val">£200.00</span></td>
       <td style="text-align:center"><span class="paid-no">✖</span></td>
       <td class="num bal-pos">£1344.90</td>
-    </tr><tr class="debt-auto-row" onclick="selectDebtRow(&#39;mpn938yrdv45_2&#39;)">
+    </tr><tr class="debt-auto-row" onclick="selectDebtRow(&#39;mpn938yrdv45_6&#39;)">
       <td class="cb-cell"><div class="cb"></div></td>
       <td class="hide-mobile" style="color:var(--muted);font-size:.75rem">Auto</td>
       <td><strong>📉 Salad money</strong><span class="auto-badge">AUTO</span><span class="debt-row-hint">Tap to select · ✏️ Edit or ✔ Toggle Paid in toolbar</span></td>
@@ -361,9 +495,9 @@ select option{background:var(--surface2)}
       <td class="hide-mobile" style="color:var(--muted);font-size:.82rem">Auto</td>
       <td class="num"><span style="color:var(--muted)">—</span></td>
       <td class="num"><span class="expense-val">£86.81</span></td>
-      <td style="text-align:center"><small style="color:#b02a1a;font-weight:600">£597.63 left</small></td>
+      <td style="text-align:center"><small style="color:#b02a1a;font-weight:600">£250.39 left</small></td>
       <td class="num bal-pos">£1258.09</td>
-    </tr><tr class="debt-auto-row" onclick="selectDebtRow(&#39;mpn9r2zpae12_2&#39;)">
+    </tr><tr class="debt-auto-row" onclick="selectDebtRow(&#39;mpn9r2zpae12_6&#39;)">
       <td class="cb-cell"><div class="cb"></div></td>
       <td class="hide-mobile" style="color:var(--muted);font-size:.75rem">Auto</td>
       <td><strong>📉 Overdales</strong><span class="auto-badge">AUTO</span><span class="debt-row-hint">Tap to select · ✏️ Edit or ✔ Toggle Paid in toolbar</span></td>
@@ -371,19 +505,19 @@ select option{background:var(--surface2)}
       <td class="hide-mobile" style="color:var(--muted);font-size:.82rem">Auto</td>
       <td class="num"><span style="color:var(--muted)">—</span></td>
       <td class="num"><span class="expense-val">£66.00</span></td>
-      <td style="text-align:center"><small style="color:#b02a1a;font-weight:600">£448.00 left</small></td>
+      <td style="text-align:center"><small style="color:#b02a1a;font-weight:600">£184.00 left</small></td>
       <td class="num bal-pos">£1192.09</td>
-    </tr><tr class="debt-auto-row" onclick="selectDebtRow(&#39;mpn9wegitnul_2&#39;)">
+    </tr><tr class="debt-auto-row" onclick="selectDebtRow(&#39;mpn9wegitnul_6&#39;)">
       <td class="cb-cell"><div class="cb"></div></td>
       <td class="hide-mobile" style="color:var(--muted);font-size:.75rem">Auto</td>
       <td><strong>📉 Shop direct</strong><span class="auto-badge">AUTO</span><span class="debt-row-hint">Tap to select · ✏️ Edit or ✔ Toggle Paid in toolbar</span></td>
       <td class="hide-mobile"><span class="cat-badge" style="background:#e74c3c22;color:#e74c3c">Debt</span></td>
       <td class="hide-mobile" style="color:var(--muted);font-size:.82rem">Auto</td>
       <td class="num"><span style="color:var(--muted)">—</span></td>
-      <td class="num"><span class="expense-val">£22.27</span></td>
-      <td style="text-align:center"><small style="color:#b02a1a;font-weight:600">£89.03 left</small></td>
-      <td class="num bal-pos">£1169.82</td>
-    </tr><tr class="debt-auto-row" onclick="selectDebtRow(&#39;mpna1yacjgtp_2&#39;)">
+      <td class="num"><span class="expense-val">£22.22</span></td>
+      <td style="text-align:center"><small style="color:var(--green);font-weight:700">✔ PAID OFF</small></td>
+      <td class="num bal-pos">£1169.87</td>
+    </tr><tr class="debt-auto-row" onclick="selectDebtRow(&#39;mpna1yacjgtp_6&#39;)">
       <td class="cb-cell"><div class="cb"></div></td>
       <td class="hide-mobile" style="color:var(--muted);font-size:.75rem">Auto</td>
       <td><strong>📉 Advantis Tax</strong><span class="auto-badge">AUTO</span><span class="debt-row-hint">Tap to select · ✏️ Edit or ✔ Toggle Paid in toolbar</span></td>
@@ -391,9 +525,9 @@ select option{background:var(--surface2)}
       <td class="hide-mobile" style="color:var(--muted);font-size:.82rem">Auto</td>
       <td class="num"><span style="color:var(--muted)">—</span></td>
       <td class="num"><span class="expense-val">£20.00</span></td>
-      <td style="text-align:center"><small style="color:#b02a1a;font-weight:600">£301.69 left</small></td>
-      <td class="num bal-pos">£1149.82</td>
-    </tr><tr class="debt-auto-row" onclick="selectDebtRow(&#39;mpnandyop7po_2&#39;)">
+      <td style="text-align:center"><small style="color:#b02a1a;font-weight:600">£221.69 left</small></td>
+      <td class="num bal-pos">£1149.87</td>
+    </tr><tr class="debt-auto-row" onclick="selectDebtRow(&#39;mpnandyop7po_6&#39;)">
       <td class="cb-cell"><div class="cb"></div></td>
       <td class="hide-mobile" style="color:var(--muted);font-size:.75rem">Auto</td>
       <td><strong>📉 Lantern</strong><span class="auto-badge">AUTO</span><span class="debt-row-hint">Tap to select · ✏️ Edit or ✔ Toggle Paid in toolbar</span></td>
@@ -401,13 +535,13 @@ select option{background:var(--surface2)}
       <td class="hide-mobile" style="color:var(--muted);font-size:.82rem">Auto</td>
       <td class="num"><span style="color:var(--muted)">—</span></td>
       <td class="num"><span class="expense-val">£5.00</span></td>
-      <td style="text-align:center"><small style="color:#b02a1a;font-weight:600">£216.00 left</small></td>
-      <td class="num bal-pos">£1144.82</td>
+      <td style="text-align:center"><small style="color:#b02a1a;font-weight:600">£196.00 left</small></td>
+      <td class="num bal-pos">£1144.87</td>
     </tr></tbody></table></div>
   </div>
 
   <!-- Savings Panel -->
-  <div id="view-savings" style="display: block;">
+  <div id="view-savings" style="display: none;">
     <div class="savings-section">
       <div class="savings-header">
         <div class="savings-title">
@@ -438,7 +572,7 @@ select option{background:var(--surface2)}
   </div>
 </div>
 
-<button class="fab" id="mainFab" onclick="fabAction()" style="font-size: 1.3rem;">🏦</button>
+<button class="fab" id="mainFab" onclick="fabAction()" style="font-size: 1.6rem;">+</button>
 
 <!-- Add/Edit Transaction Modal -->
 <div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
@@ -601,6 +735,32 @@ select option{background:var(--surface2)}
     <button class="btn btn-purple" onclick="saveGoal()">🎯 Add Goal</button>
   </div>
 </div></div>
+
+<!-- Summary Card Popup -->
+<div class="summary-popup-overlay" id="summaryPopupOverlay" onclick="closeSummaryPopup(event)">
+  <div class="summary-popup" id="summaryPopup">
+    <div class="sp-header">
+      <div>
+        <div class="sp-title" id="spTitle">💰 Income</div>
+        <div class="sp-total" id="spTotal">£0.00</div>
+      </div>
+      <button class="sp-close" onclick="closeSummaryPopup()">×</button>
+    </div>
+    <div id="spBody"></div>
+  </div>
+</div>
+
+<!-- Recurring Item Manager -->
+<div class="recur-mgr-overlay" id="recurMgrOverlay" onclick="closeRecurMgr(event)">
+  <div class="recur-mgr" id="recurMgr">
+    <div class="rm-header">
+      <span class="rm-title">🔄 Recurring Items</span>
+      <button class="rm-close" onclick="closeRecurMgr()">×</button>
+    </div>
+    <div style="font-size:.82rem;color:var(--subtext);margin-bottom:14px;line-height:1.5">Items marked <strong>RECUR</strong> across all months. Expand to view, edit or delete individual months.</div>
+    <div id="recurMgrBody"></div>
+  </div>
+</div>
 
 <!-- Cloud Setup -->
 <div class="setup-overlay" id="setupOverlay">
@@ -782,14 +942,14 @@ function renderSummary(){
   const monthGoalDeduction=(data._savingsGoals||[]).reduce((sum,g)=>{const p=(data._goalPayments||{})[g.id+'_'+currentMonth];return sum+(p&&p.confirmed?p.amount:0);},0);
   const bal=inc-exp-debtPmts-monthSavingsDeduction-monthGoalDeduction;
   document.getElementById('summaryGrid').innerHTML=`
-    <div class="card"><div class="card-label">💰 Income</div><div class="card-value green">£${inc.toFixed(2)}</div></div>
-    <div class="card"><div class="card-label">💸 Expenses</div><div class="card-value red">£${exp.toFixed(2)}</div></div>
-    <div class="card"><div class="card-label">💳 Debt Pmts</div><div class="card-value red">£${debtPmts.toFixed(2)}</div></div>
-    <div class="card"><div class="card-label">⚖ Balance</div><div class="card-value ${bal>=0?'green':'red'}">£${bal.toFixed(2)}</div></div>
-    <div class="card"><div class="card-label">✔ Paid</div><div class="card-value teal">£${paid.toFixed(2)}</div></div>
-    <div class="card"><div class="card-label">⏳ Outstanding</div><div class="card-value orange">£${unpaid.toFixed(2)}</div></div>
-    <div class="card"><div class="card-label">💳 Total Debt</div><div class="card-value ${debtRem>0?'red':'teal'}">£${debtRem.toFixed(2)}</div></div>
-    <div class="card"><div class="card-label">🏦 Savings</div><div class="card-value teal">£${savingsTotal.toFixed(2)}</div></div>`;
+    <div class="card" onclick="openSummaryPopup('income')" title="Click to see breakdown"><div class="card-label">💰 Income</div><div class="card-value green">£${inc.toFixed(2)}</div></div>
+    <div class="card" onclick="openSummaryPopup('expenses')" title="Click to see breakdown"><div class="card-label">💸 Expenses</div><div class="card-value red">£${exp.toFixed(2)}</div></div>
+    <div class="card" onclick="openSummaryPopup('debt')" title="Click to see breakdown"><div class="card-label">💳 Debt Pmts</div><div class="card-value red">£${debtPmts.toFixed(2)}</div></div>
+    <div class="card" onclick="openSummaryPopup('balance')" title="Click to see breakdown"><div class="card-label">⚖ Balance</div><div class="card-value ${bal>=0?'green':'red'}">£${bal.toFixed(2)}</div></div>
+    <div class="card" onclick="openSummaryPopup('paid')" title="Click to see breakdown"><div class="card-label">✔ Paid</div><div class="card-value teal">£${paid.toFixed(2)}</div></div>
+    <div class="card" onclick="openSummaryPopup('outstanding')" title="Click to see breakdown"><div class="card-label">⏳ Outstanding</div><div class="card-value orange">£${unpaid.toFixed(2)}</div></div>
+    <div class="card" onclick="openSummaryPopup('totaldebt')" title="Click to see breakdown"><div class="card-label">💳 Total Debt</div><div class="card-value ${debtRem>0?'red':'teal'}">£${debtRem.toFixed(2)}</div></div>
+    <div class="card" onclick="openSummaryPopup('savings')" title="Click to see breakdown"><div class="card-label">🏦 Savings</div><div class="card-value teal">£${savingsTotal.toFixed(2)}</div></div>`;
   if(monthIdx>=0){document.getElementById('yearProgress').style.display='flex';const p=Math.round((monthIdx/(MONTHS.length-1))*100);document.getElementById('progressFill').style.width=p+'%';document.getElementById('progressLabel').textContent='Month '+(monthIdx+1)+' of '+MONTHS.length;document.getElementById('progressPct').textContent=p+'% through plan';}
 }
 
@@ -954,6 +1114,9 @@ function saveTransaction(){
     data[currentMonth].push(t);
     // Handle recurring
     if(document.getElementById('f-recurring').checked){
+      // Mark the source month entry as recurring too
+      t.isRecurring=true;
+      data[currentMonth][data[currentMonth].length-1]=t;
       const untilId=document.getElementById('f-until').value;
       const fromIdx=MONTHS.findIndex(m=>m.id===currentMonth)+1;
       const toIdx=MONTHS.findIndex(m=>m.id===untilId);
@@ -1145,7 +1308,212 @@ function importJSON(){document.getElementById('fileInput').click();}
 function handleFileLoad(e){const file=e.target.files[0];if(!file)return;const reader=new FileReader();reader.onload=ev=>{try{data=JSON.parse(ev.target.result);migrate();saveLocal();buildTabs();showMonth(currentMonth);renderSavings();if(currentView==='goals')renderGoalsTab();toast('Restored ✔');}catch(err){alert('Could not read file: '+err.message);}};reader.readAsText(file);e.target.value='';}
 function exportCSV(){const m=MONTHS.find(m=>m.id===currentMonth);const txns=data[currentMonth]||[];const rows=[['Date','Description','Category','Pay Method','Income','Expense','Paid']];txns.forEach(t=>rows.push([t.date,t.description,t.category,t.pay_method,t.income||'',t.expense||'',t.paid?'YES':'NO']));const csv=rows.map(r=>r.map(c=>'"'+(String(c).replace(/"/g,'""'))+'"').join(',')).join('\n');const blob=new Blob([csv],{type:'text/csv'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='Finance_'+(m?m.label+'_'+m.year:'month')+'.csv';a.click();toast('Exported CSV ✔');}
 
-// ── KEYBOARD ──────────────────────────────────────────────────────────────────
+// ── SUMMARY CARD POPUP ────────────────────────────────────────────────────────
+function openSummaryPopup(type){
+  const txns=data[currentMonth]||[];
+  const monthIdx=MONTHS.findIndex(m=>m.id===currentMonth);
+  const debtPmts=getDebtPaymentsForMonth(monthIdx);
+  const savingsThisMonth=(data._savings||[]).filter(s=>s.monthId===currentMonth);
+  const goalPmtThisMonth=(data._savingsGoals||[]).reduce((arr,g)=>{const p=(data._goalPayments||{})[g.id+'_'+currentMonth];if(p&&p.confirmed)arr.push({name:g.name,amount:p.amount,isGoal:true});return arr;},[]);
+
+  let title='',total=0,items=[],colorClass='green',body='';
+
+  if(type==='income'){
+    title='💰 Income';colorClass='green';
+    items=txns.filter(t=>t.income>0).map(t=>({name:t.description,amount:t.income,meta:t.date||'',badge:t.isRecurring?'recur':'',paid:t.paid}));
+    total=items.reduce((s,i)=>s+i.amount,0);
+    body=items.length?items.map(it=>`<div class="sp-item" onclick="closeSummaryPopup()">
+      <div><div class="sp-item-name">${escHtml(it.name)}${it.badge?'<span class="sp-item-badge recur">RECUR</span>':''}</div>
+      <div class="sp-item-meta">${it.meta}${it.paid?' · ✔ Paid':''}</div></div>
+      <span class="sp-item-amount green">+£${it.amount.toFixed(2)}</span></div>`).join('')
+      :'<div class="sp-empty">No income entries this month</div>';
+  } else if(type==='expenses'){
+    title='💸 Expenses';colorClass='red';
+    items=txns.filter(t=>t.expense>0).map(t=>({name:t.description,amount:t.expense,meta:(t.category||'')+(t.date?' · '+t.date:''),badge:t.isRecurring?'recur':'',paid:t.paid}));
+    total=items.reduce((s,i)=>s+i.amount,0);
+    body=items.length?items.map(it=>`<div class="sp-item">
+      <div><div class="sp-item-name">${escHtml(it.name)}${it.badge?'<span class="sp-item-badge recur">RECUR</span>':''}</div>
+      <div class="sp-item-meta">${escHtml(it.meta)}${it.paid?' · ✔ Paid':' · Unpaid'}</div></div>
+      <span class="sp-item-amount red">-£${it.amount.toFixed(2)}</span></div>`).join('')
+      :'<div class="sp-empty">No expenses this month</div>';
+  } else if(type==='debt'){
+    title='💳 Debt Payments';colorClass='red';
+    total=debtPmts.reduce((s,d)=>s+d.payment,0);
+    body=debtPmts.length?debtPmts.map(dp=>`<div class="sp-item">
+      <div><div class="sp-item-name">📉 ${escHtml(dp.name)}<span class="sp-item-badge debt">DEBT</span></div>
+      <div class="sp-item-meta">${dp.remainAfter>0?'£'+dp.remainAfter.toFixed(2)+' remaining after payment':'✔ Paid off this month'} · ${dp.confirmed?'✔ Confirmed':'Pending'}</div></div>
+      <span class="sp-item-amount red">-£${dp.payment.toFixed(2)}</span></div>`).join('')
+      :'<div class="sp-empty">No debt payments scheduled this month</div>';
+  } else if(type==='balance'){
+    title='⚖ Balance Breakdown';colorClass='green';
+    const inc=txns.reduce((s,t)=>s+(t.income||0),0);
+    const exp=txns.reduce((s,t)=>s+(t.expense||0),0);
+    const dPmts=debtPmts.reduce((s,d)=>s+d.payment,0);
+    const mSav=savingsThisMonth.filter(s=>s.confirmed).reduce((s,e)=>s+(e.type==='deposit'?e.amount:-e.amount),0);
+    const mGoal=goalPmtThisMonth.reduce((s,g)=>s+g.amount,0);
+    total=inc-exp-dPmts-mSav-mGoal;
+    colorClass=total>=0?'green':'red';
+    body=`
+      <div class="sp-section-label">Calculation</div>
+      <div class="sp-item"><div><div class="sp-item-name">💰 Total Income</div></div><span class="sp-item-amount green">+£${inc.toFixed(2)}</span></div>
+      <div class="sp-item"><div><div class="sp-item-name">💸 Total Expenses</div></div><span class="sp-item-amount red">-£${exp.toFixed(2)}</span></div>
+      <div class="sp-item"><div><div class="sp-item-name">💳 Debt Payments</div></div><span class="sp-item-amount red">-£${dPmts.toFixed(2)}</span></div>
+      ${mSav>0?`<div class="sp-item"><div><div class="sp-item-name">🏦 Savings (this month)</div></div><span class="sp-item-amount red">-£${mSav.toFixed(2)}</span></div>`:''}
+      ${mGoal>0?`<div class="sp-item"><div><div class="sp-item-name">🎯 Goal Payments</div></div><span class="sp-item-amount red">-£${mGoal.toFixed(2)}</span></div>`:''}
+      <div style="margin-top:12px;padding:12px;background:${total>=0?'var(--income-bg)':'var(--debt-bg)'};border-radius:var(--radius-sm);display:flex;justify-content:space-between;align-items:center">
+        <span style="font-weight:700">Net Balance</span>
+        <span style="font-size:1.2rem;font-weight:900;color:${total>=0?'var(--green)':'var(--red)'}">£${total.toFixed(2)}</span>
+      </div>`;
+  } else if(type==='paid'){
+    title='✔ Paid This Month';colorClass='teal';
+    const paidTxns=txns.filter(t=>t.paid&&t.expense>0);
+    total=paidTxns.reduce((s,t)=>s+(t.expense||0),0);
+    body=paidTxns.length?paidTxns.map(t=>`<div class="sp-item">
+      <div><div class="sp-item-name">${escHtml(t.description)}</div><div class="sp-item-meta">${t.date||''} · ${t.category||''}</div></div>
+      <span class="sp-item-amount teal">£${(t.expense||0).toFixed(2)}</span></div>`).join('')
+      :'<div class="sp-empty">No paid expenses yet — tap a row and use ✔ Toggle Paid</div>';
+  } else if(type==='outstanding'){
+    title='⏳ Outstanding (Unpaid)';colorClass='orange';
+    const unpaidTxns=txns.filter(t=>!t.paid&&t.expense>0);
+    total=unpaidTxns.reduce((s,t)=>s+(t.expense||0),0);
+    body=unpaidTxns.length?unpaidTxns.map(t=>`<div class="sp-item">
+      <div><div class="sp-item-name">${escHtml(t.description)}${t.isRecurring?'<span class="sp-item-badge recur">RECUR</span>':''}</div><div class="sp-item-meta">${t.date||''} · ${t.category||'No category'}</div></div>
+      <span class="sp-item-amount orange">£${(t.expense||0).toFixed(2)}</span></div>`).join('')
+      :'<div class="sp-empty">🎉 All expenses are paid this month!</div>';
+  } else if(type==='totaldebt'){
+    title='💳 Total Debt Remaining';colorClass='red';
+    const debts=data._debts||[];
+    total=getTotalDebtRemaining(monthIdx);
+    if(debts.length){
+      body=`<div class="sp-section-label">All debts as of this month</div>`+debts.map(debt=>{
+        const confirmedPaid=getConfirmedPaidUpTo(debt,monthIdx);const rem=Math.max(0,debt.total-confirmedPaid);
+        const pct=Math.min(100,Math.round((confirmedPaid/debt.total)*100));
+        const bc=pct>=100?'#1a8f4e':pct>=60?'#c47a1a':'#e74c3c';
+        return `<div class="sp-item" style="flex-direction:column;align-items:stretch;gap:6px">
+          <div style="display:flex;justify-content:space-between">
+            <span class="sp-item-name">📉 ${escHtml(debt.name)}</span>
+            <span class="sp-item-amount ${rem>0?'red':'teal'}">£${rem.toFixed(2)} left</span>
+          </div>
+          <div class="sp-item-meta">£${debt.monthly.toFixed(2)}/month · £${confirmedPaid.toFixed(2)} paid of £${debt.total.toFixed(2)}</div>
+          <div style="height:5px;background:var(--surface3);border-radius:3px;overflow:hidden">
+            <div style="height:100%;width:${pct}%;background:${bc};border-radius:3px"></div></div>
+        </div>`;
+      }).join('');
+    } else {body='<div class="sp-empty">No debts tracked — tap 💳 Debts to add</div>';}
+  } else if(type==='savings'){
+    title='🏦 Savings Total';colorClass='teal';
+    const savLogConf=(data._savings||[]).filter(s=>s.confirmed).reduce((s,e)=>s+(e.type==='deposit'?e.amount:-e.amount),0);
+    const goalTotal=Object.values(data._goalPayments||{}).filter(p=>p.confirmed).reduce((s,p)=>s+p.amount,0);
+    total=savLogConf+goalTotal;
+    const savItems=(data._savings||[]).filter(s=>s.confirmed);
+    body=`<div class="sp-section-label">Savings Log (confirmed, all time)</div>`+
+      (savItems.length?savItems.map(s=>{const mLabel=MONTHS.find(m=>m.id===s.monthId);return`<div class="sp-item">
+        <div><div class="sp-item-name">${escHtml(s.description)}</div><div class="sp-item-meta">${s.date||''}${mLabel?' · '+mLabel.label+' '+mLabel.year:''}</div></div>
+        <span class="sp-item-amount ${s.type==='deposit'?'green':'red'}">${s.type==='deposit'?'+':'-'}£${s.amount.toFixed(2)}</span></div>`;}).join('')
+        :'<div class="sp-empty">No confirmed savings yet</div>')+
+      (goalTotal>0?`<div class="sp-section-label" style="margin-top:8px">Goal Payments (confirmed, all time)</div>`+
+        Object.entries(data._goalPayments||{}).filter(([,p])=>p.confirmed).map(([k,p])=>{const parts=k.split('_');const gId=parts.slice(0,-2).join('_');const mId=parts.slice(-2).join('_');const g=(data._savingsGoals||[]).find(g=>g.id===gId);const mLbl=MONTHS.find(m=>m.id===mId);return g?`<div class="sp-item"><div><div class="sp-item-name">🎯 ${escHtml(g.name)}</div><div class="sp-item-meta">${mLbl?mLbl.label+' '+mLbl.year:''}</div></div><span class="sp-item-amount teal">+£${p.amount.toFixed(2)}</span></div>`:''}).join(''):'');
+  }
+
+  document.getElementById('spTitle').textContent=title;
+  document.getElementById('spTotal').textContent='£'+total.toFixed(2);
+  document.getElementById('spTotal').className='sp-total '+colorClass;
+  document.getElementById('spBody').innerHTML=body;
+  document.getElementById('summaryPopupOverlay').classList.add('open');
+}
+function closeSummaryPopup(e){if(e&&e.target!==document.getElementById('summaryPopupOverlay'))return;document.getElementById('summaryPopupOverlay').classList.remove('open');}
+
+// ── RECURRING MANAGER ─────────────────────────────────────────────────────────
+function openRecurMgr(){
+  renderRecurMgr();
+  document.getElementById('recurMgrOverlay').classList.add('open');
+}
+function closeRecurMgr(e){if(e&&e.target!==document.getElementById('recurMgrOverlay'))return;document.getElementById('recurMgrOverlay').classList.remove('open');}
+
+function renderRecurMgr(){
+  // Find all unique recurring items grouped by description+category
+  const groups={};
+  MONTHS.forEach((m,mIdx)=>{
+    (data[m.id]||[]).forEach((t,tIdx)=>{
+      if(!t.isRecurring&&mIdx>0)return; // only show items that appear in multiple months
+      if(!t.isRecurring)return;
+      const key=t.description+'||'+(t.category||'')+'||'+(t.income>0?'in':'out');
+      if(!groups[key])groups[key]={name:t.description,category:t.category||'',isIncome:t.income>0,amount:t.income||t.expense||0,months:[]};
+      groups[key].months.push({monthId:m.id,monthLabel:m.label+' '+m.year,monthIdx:mIdx,txnIdx:tIdx,t});
+    });
+  });
+
+  const body=document.getElementById('recurMgrBody');
+  const keys=Object.keys(groups);
+  if(!keys.length){body.innerHTML='<div class="rm-empty"><div class="icon">🔄</div><p>No recurring items found</p><p style="font-size:.78rem;margin-top:6px">Add a transaction with the Recurring toggle enabled</p></div>';return;}
+
+  body.innerHTML=keys.map((key,ki)=>{
+    const g=groups[key];
+    const isOpen=false;
+    const monthRows=g.months.map(m=>{
+      const isCur=m.monthId===currentMonth;
+      return `<div class="rm-month-row">
+        <span class="rm-month-label${isCur?' current-month':''}">${isCur?'▶ ':''}${m.monthLabel}</span>
+        <div class="rm-month-actions">
+          <button class="rm-btn rm-btn-edit" onclick="recurEditTxn('${m.monthId}',${m.txnIdx});closeRecurMgr()">✏ Edit</button>
+          <button class="rm-btn rm-btn-del" onclick="recurDeleteTxn('${m.monthId}',${m.txnIdx},'${key}')">🗑</button>
+        </div>
+      </div>`;
+    }).join('');
+
+    return `<div class="rm-item" id="rmi_${ki}">
+      <div class="rm-item-header" onclick="toggleRecurItem(${ki})">
+        <span class="rm-item-name">${escHtml(g.name)}</span>
+        <span style="font-size:.7rem;color:var(--muted);flex-shrink:0;margin-right:4px">${g.months.length} month${g.months.length!==1?'s':''}</span>
+        <span class="rm-item-amount${g.isIncome?' income':''}">${g.isIncome?'+':'-'}£${g.amount.toFixed(2)}</span>
+        <span class="rm-item-chevron">▼</span>
+      </div>
+      <div class="rm-months-list">
+        <div style="padding:8px 14px;background:var(--surface2);display:flex;justify-content:space-between;align-items:center">
+          <span style="font-size:.75rem;color:var(--subtext);font-weight:600">${escHtml(g.category||'No category')}</span>
+          <button class="rm-btn rm-btn-del-all" onclick="recurDeleteAll('${key}')">🗑 Delete All</button>
+        </div>
+        ${monthRows}
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function toggleRecurItem(ki){
+  const el=document.getElementById('rmi_'+ki);
+  el.classList.toggle('open');
+}
+
+function recurEditTxn(monthId,txnIdx){
+  showMonth(monthId);
+  selectedIdx=txnIdx;selectedDebtKey=null;
+  renderTable();
+  openEdit();
+}
+
+function recurDeleteTxn(monthId,txnIdx,groupKey){
+  const t=(data[monthId]||[])[txnIdx];if(!t)return;
+  if(!confirm(`Delete "${t.description}" from this month only (${MONTHS.find(m=>m.id===monthId)?.label})?`))return;
+  data[monthId].splice(txnIdx,1);
+  saveLocal();renderTable();renderSummary();buildTabs();
+  toast('Deleted from this month ✔');
+  renderRecurMgr();
+}
+
+function recurDeleteAll(groupKey){
+  const[desc,cat,dir]=groupKey.split('||');
+  // Count first
+  const count=MONTHS.reduce((c,m)=>c+(data[m.id]||[]).filter(t=>t.isRecurring&&t.description===desc&&(t.category||'')===(cat||'')&&((dir==='in'&&t.income>0)||(dir==='out'&&t.expense>0))).length,0);
+  if(!confirm(`Delete "${desc}" from all ${count} months? This cannot be undone.`))return;
+  MONTHS.forEach(m=>{
+    data[m.id]=(data[m.id]||[]).filter(t=>!(t.isRecurring&&t.description===desc&&(t.category||'')===(cat||'')&&((dir==='in'&&t.income>0)||(dir==='out'&&t.expense>0))));
+  });
+  saveLocal();renderTable();renderSummary();buildTabs();
+  toast(`Deleted from ${count} months ✔`);
+  renderRecurMgr();
+}
+
+
 
 // VIEW TABS
 function showView(view){
@@ -1239,7 +1607,7 @@ document.addEventListener('keydown',e=>{
   if(e.target.tagName==='INPUT'||e.target.tagName==='SELECT')return;
   if(e.key==='a'||e.key==='A')openAdd();if(e.key==='e'||e.key==='E')openEdit();
   if(e.key==='Delete')confirmDelete();if(e.key===' '){e.preventDefault();togglePaid();}
-  if(e.key==='Escape'){closeModal();closeConfirm();closeDebtModal();closeSavingModal();closeDebtPayEdit();closeGoalModal();}
+  if(e.key==='Escape'){closeModal();closeConfirm();closeDebtModal();closeSavingModal();closeDebtPayEdit();closeGoalModal();closeSummaryPopup();closeRecurMgr();}
   if(e.key==='ArrowRight'){const i=MONTHS.findIndex(m=>m.id===currentMonth);if(i<MONTHS.length-1)showMonth(MONTHS[i+1].id);}
   if(e.key==='ArrowLeft'){const i=MONTHS.findIndex(m=>m.id===currentMonth);if(i>0)showMonth(MONTHS[i-1].id);}
   if(e.key==='1')showView('transactions');if(e.key==='2')showView('savings');if(e.key==='3')showView('goals');
@@ -1247,6 +1615,7 @@ document.addEventListener('keydown',e=>{
 
 init();
 </script>
+
 
 
 </body></html>
